@@ -1,16 +1,29 @@
 #pragma once
 
-class GameObject;
-
-class BaseComponent
+namespace dae
 {
-public:
-	BaseComponent();
-	~BaseComponent();
+	class GameObject;
+	class TransformComponent;
 
-	GameObject* getGameObject() const { return m_GameObject; }
-	virtual void Update() {};
-protected:
-	GameObject* m_GameObject;
-};
+	class BaseComponent
+	{
+	public:
+		BaseComponent();
+		~BaseComponent();
 
+		GameObject* GetGameObject() const { return mGameObject; }
+		TransformComponent* GetTransform() const;
+
+		virtual void Update(float deltaTime) = 0;
+		virtual void Render() = 0;
+
+	protected:
+		GameObject* mGameObject;
+
+	private:
+		friend class GameObject;
+
+		//BaseComponent(const BaseComponent &obj);
+		BaseComponent& operator=(const BaseComponent& obj);
+	};
+}

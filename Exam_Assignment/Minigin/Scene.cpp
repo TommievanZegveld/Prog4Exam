@@ -8,16 +8,16 @@ dae::Scene::Scene(const std::string& name) : mName(name) {}
 
 dae::Scene::~Scene() = default;
 
-void dae::Scene::Add(const std::shared_ptr<SceneObject>& object)
+void dae::Scene::Add(const std::shared_ptr<GameObject>& object)
 {
 	mObjects.push_back(object);
 }
 
-void dae::Scene::Update()
+void dae::Scene::Update(float deltaTime)
 {
 	for(auto gameObject : mObjects)
 	{
-		gameObject->Update();
+		gameObject->Update(deltaTime);
 	}
 }
 

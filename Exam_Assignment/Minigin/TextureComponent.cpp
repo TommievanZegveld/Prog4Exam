@@ -5,13 +5,14 @@
 #include <SDL.h>
 #include "Renderer.h"
 #include "ResourceManager.h"
+#include "Texture2D.h"
 
 
-dae::TextureComponent::~TextureComponent()
+TextureComponent::~TextureComponent()
 {
 }
 
-void dae::TextureComponent::Render()
+void TextureComponent::Render()
 {
 	if (mTexture != nullptr)
 	{
@@ -20,13 +21,13 @@ void dae::TextureComponent::Render()
 	}
 }
 
-void dae::TextureComponent::Update(float deltaTime)
+void TextureComponent::Update(float deltaTime)
 {
 	UNREFERENCED_PARAMETER(deltaTime);
 }
 
-void dae::TextureComponent::SetTexture(const std::string& fileName)
+void TextureComponent::SetTexture(const std::string& fileName)
 {
-	mTexture = dae::ResourceManager::GetInstance().LoadTexture(fileName);
+	mTexture = ResourceManager::GetInstance().LoadTexture(fileName);
 
 }

@@ -1,31 +1,19 @@
-﻿  MiniginPCH.cpp
-  TransformComponent.cpp
-  TextureComponent.cpp
-  Texture2D.cpp
-  TextComponent.cpp
-  SceneManager.cpp
-  Scene.cpp
-  ResourceManager.cpp
-  Renderer.cpp
-  Minigin.cpp
-  Log.cpp
-  InputManager.cpp
+﻿  TextComponent.cpp
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\type_traits(1192): error C2027: use of undefined type 'Texture2D'
+  c:\users\tommie\onedrive - hogeschool west-vlaanderen\17-18\dae\semester 2\programming 4\exam assignment\prog4exam\exam_assignment\minigin\renderer.h(7): note: see declaration of 'Texture2D'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\type_traits(1199): note: see reference to class template instantiation 'std::aligned_union<1,_Ty>' being compiled
+          with
+          [
+              _Ty=Texture2D
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1731): note: see reference to alias template instantiation 'aligned_union_t<1,Texture2D>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1778): note: see reference to class template instantiation 'std::_Ref_count_obj<_Ty>' being compiled
+          with
+          [
+              _Ty=Texture2D
+          ]
+  c:\users\tommie\onedrive - hogeschool west-vlaanderen\17-18\dae\semester 2\programming 4\exam assignment\prog4exam\exam_assignment\minigin\textcomponent.cpp(39): note: see reference to function template instantiation 'std::shared_ptr<Texture2D> std::make_shared<Texture2D,SDL_Texture*&>(SDL_Texture *&)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\type_traits(1193): error C2027: use of undefined type 'Texture2D'
+  c:\users\tommie\onedrive - hogeschool west-vlaanderen\17-18\dae\semester 2\programming 4\exam assignment\prog4exam\exam_assignment\minigin\renderer.h(7): note: see declaration of 'Texture2D'
   GameObject.cpp
-  Font.cpp
-  BaseComponent.cpp
   Generating Code...
-     Creating library C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.lib and object C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.exp
-  Minigin.vcxproj -> C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.exe
-  Minigin.vcxproj -> C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.pdb (Partial PDB)
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
-  1 File(s) copied
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\zlib1.dll
-  6 File(s) copied
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
-  2 File(s) copied

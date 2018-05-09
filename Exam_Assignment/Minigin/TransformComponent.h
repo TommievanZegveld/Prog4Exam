@@ -5,23 +5,19 @@
 #include <glm/detail/type_vec3.hpp>
 #pragma warning(pop)
 
-
-namespace dae
+class TransformComponent : public BaseComponent
 {
-	class TransformComponent : public BaseComponent
-	{
-	public:
-		TransformComponent();
-		~TransformComponent();
+public:
+	TransformComponent();
+	~TransformComponent();
 
-		void Render();
-		void Update(float deltaTime);
+	void Render();
+	void Update(float deltaTime);
 
-		const glm::vec3& GetPosition() const { return mPosition; }
-		void SetPosition(float x, float y, float z);
-		void Move(float x, float y, float z);
+	const glm::vec3& GetPosition() const { return mPosition; }
+	void SetPosition(float x, float y, float z);
+	void Move(float x, float y, float z);
 
-	private:
-		glm::vec3 mPosition;
-	};
-}
+private:
+	glm::vec3 mPosition;
+};

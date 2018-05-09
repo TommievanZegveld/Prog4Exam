@@ -3,7 +3,7 @@
 #include "Scene.h"
 
 
-void dae::SceneManager::Update(float deltaTime)
+void SceneManager::Update(float deltaTime)
 {
 	for(auto scene : mScenes)
 	{
@@ -11,7 +11,7 @@ void dae::SceneManager::Update(float deltaTime)
 	}
 }
 
-void dae::SceneManager::Render()
+void SceneManager::Render()
 {
 	for (const auto scene : mScenes)
 	{
@@ -19,7 +19,7 @@ void dae::SceneManager::Render()
 	}
 }
 
-dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
+Scene& SceneManager::CreateScene(const std::string& name)
 {
 	const auto scene = std::shared_ptr<Scene>(new Scene(name));
 	mScenes.push_back(scene);

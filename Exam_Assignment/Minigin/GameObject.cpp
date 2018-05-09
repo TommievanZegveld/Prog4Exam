@@ -5,13 +5,13 @@
 #include "TransformComponent.h"
 #include "TextureComponent.h"
 
-dae::GameObject::GameObject()
+GameObject::GameObject()
 {
 	mTransform = new TransformComponent();
 	AddComponent(mTransform);
 }
 
-dae::GameObject::~GameObject()
+GameObject::~GameObject()
 {
 	for(auto com : mComponents)
 	{
@@ -20,7 +20,7 @@ dae::GameObject::~GameObject()
 	}
 }
 
-void dae::GameObject::Update(float deltaTime)
+void GameObject::Update(float deltaTime)
 {
 	for (int i = 0; i < mComponents.size(); i++)
 	{
@@ -28,7 +28,7 @@ void dae::GameObject::Update(float deltaTime)
 	}
 }
 
-void dae::GameObject::Render() const
+void GameObject::Render() const
 {
 	for (int i = 0; i < mComponents.size(); i++)
 	{
@@ -36,14 +36,14 @@ void dae::GameObject::Render() const
 	}
 }
 
-void dae::GameObject::SetPosition(float x, float y)
+void GameObject::SetPosition(float x, float y)
 {
 	mTransform->SetPosition(x, y, 0.0f);
 }
 
-void dae::GameObject::AddComponent(BaseComponent* component)
+void GameObject::AddComponent(BaseComponent* component)
 {
-	component->mGameObject = this;
+	//component->mGameObject = this;
 	mComponents.push_back(component);
 }
 

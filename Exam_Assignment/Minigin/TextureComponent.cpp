@@ -5,7 +5,10 @@
 #include <SDL.h>
 #include "Renderer.h"
 #include "ResourceManager.h"
-#include "Texture2D.h"
+#include "RenderComponent.h"
+
+//#include "Texture2D.h" If included in header; everything is fine; but when forward declared and included in cpp it throws an "use of undefined type"Texture2D"
+// Fix for now : include in header *DANGER*
 
 
 TextureComponent::~TextureComponent()
@@ -14,11 +17,16 @@ TextureComponent::~TextureComponent()
 
 void TextureComponent::Render()
 {
-	if (mTexture != nullptr)
+	if (mRenderComp == nullptr)
 	{
-		auto pos = mGameObject->GetTransform()->GetPosition();
-		Renderer::GetInstance().RenderTexture(*mTexture, pos.x, pos.y);
+		mRenderComp = mGameObject->GetComponent<RenderComponent>();
+		if (mRenderComp == nullptr)
+		{
+			mRenderComp = new RenderComponent(mTexture);
+			mGameObject->AddComponent(mRenderComp);
+		}
 	}
+	mRenderComp->Render();
 }
 
 void TextureComponent::Update(float deltaTime)
@@ -29,5 +37,4 @@ void TextureComponent::Update(float deltaTime)
 void TextureComponent::SetTexture(const std::string& fileName)
 {
 	mTexture = ResourceManager::GetInstance().LoadTexture(fileName);
-
 }

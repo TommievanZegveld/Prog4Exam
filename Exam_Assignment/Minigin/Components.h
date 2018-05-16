@@ -4,3 +4,5 @@
 #include "TransformComponent.h"
 #include "TextComponent.h"
 #include "TextureComponent.h"
+#include "RenderComponent.h"
+#include "FPSComponent.h"

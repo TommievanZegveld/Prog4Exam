@@ -2,6 +2,7 @@
 #include "BaseComponent.h"
 
 class TextureComponent;
+class RenderComponent;
 class Font;
 class Texture2D;
 class TextComponent : public BaseComponent
@@ -21,4 +22,6 @@ private:
 	std::string mText;
 	std::shared_ptr< Font > mFont;
 	std::shared_ptr < Texture2D > mTexture;
+
+	RenderComponent* mRenderComp;
 };

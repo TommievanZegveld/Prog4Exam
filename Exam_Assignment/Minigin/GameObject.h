@@ -1,8 +1,8 @@
 #pragma once
 #include <memory>
-#include "BaseComponent.h"
 
 class TransformComponent;
+class BaseComponent;
 
 class GameObject
 {
@@ -11,6 +11,7 @@ public:
 	void Render() const;
 
 	TransformComponent* GetTransform() const { return mTransform; }
+
 	void SetPosition(float x, float y);
 
 	void AddComponent(BaseComponent* component);

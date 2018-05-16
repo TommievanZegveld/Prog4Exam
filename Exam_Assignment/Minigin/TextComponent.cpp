@@ -1,10 +1,10 @@
 #include "MiniginPCH.h"
 #include "TextComponent.h"
 #include "TransformComponent.h"
-#include "TextureComponent.h"
 #include "GameObject.h"
 #include "Renderer.h"
 #include "Font.h"
+#include "RenderComponent.h"
 
 
 TextComponent::TextComponent(const std::string& text, std::shared_ptr<Font> font) :
@@ -42,11 +42,16 @@ void TextComponent::Update(float deltaTime)
 
 void TextComponent::Render()
 {
-	if (mTexture != nullptr)
+	if (mRenderComp == nullptr)
 	{
-		const auto pos = mGameObject->GetTransform()->GetPosition();
-		Renderer::GetInstance().RenderTexture(*mTexture, pos.x, pos.y);
+		mRenderComp = mGameObject->GetComponent<RenderComponent>();
+		if (mRenderComp == nullptr)
+		{
+			mRenderComp = new RenderComponent(mTexture);
+			mGameObject->AddComponent(mRenderComp);
+		}
 	}
+	mRenderComp->Render();
 }
 
 void TextComponent::SetText(const std::string& text)

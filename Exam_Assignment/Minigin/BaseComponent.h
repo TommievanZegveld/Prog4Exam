@@ -15,6 +15,7 @@ public:
 	virtual void Render() = 0;
 
 protected:
+	friend class GameObject;
 	GameObject* mGameObject;
 
 private:

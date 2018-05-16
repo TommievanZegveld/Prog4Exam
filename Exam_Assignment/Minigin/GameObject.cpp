@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "TransformComponent.h"
 #include "TextureComponent.h"
+#include "BaseComponent.h"
 
 GameObject::GameObject()
 {
@@ -22,7 +23,7 @@ GameObject::~GameObject()
 
 void GameObject::Update(float deltaTime)
 {
-	for (int i = 0; i < mComponents.size(); i++)
+	for (size_t i = 0; i < mComponents.size(); ++i)
 	{
 		mComponents[i]->Update(deltaTime);
 	}
@@ -30,7 +31,7 @@ void GameObject::Update(float deltaTime)
 
 void GameObject::Render() const
 {
-	for (int i = 0; i < mComponents.size(); i++)
+	for (size_t i = 0; i < mComponents.size(); ++i)
 	{
 		mComponents[i]->Render();
 	}
@@ -43,7 +44,7 @@ void GameObject::SetPosition(float x, float y)
 
 void GameObject::AddComponent(BaseComponent* component)
 {
-	//component->mGameObject = this;
+	component->mGameObject = this;
 	mComponents.push_back(component);
 }
 

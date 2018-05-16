@@ -1,7 +1,8 @@
 #pragma once
 #include "BaseComponent.h"
+#include "Texture2D.h"
 
-class Texture2D;
+class RenderComponent;
 
 class TextureComponent : public BaseComponent
 {
@@ -9,7 +10,7 @@ public:
 	TextureComponent() = default;
 	~TextureComponent();
 
-	void Render() override;
+	virtual void Render() override;
 	void Update(float deltaTime) override;
 
 	void SetTexture(const std::string& fileName);
@@ -22,4 +23,6 @@ public:
 	TextureComponent & operator= (const TextureComponent &&) = delete;
 private:
 	std::shared_ptr<Texture2D> mTexture;
+
+	RenderComponent* mRenderComp;
 };

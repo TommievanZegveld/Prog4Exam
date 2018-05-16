@@ -1,9 +1,13 @@
 #pragma once
-#include "BaseComponent.h"
+#include "TextComponent.h"	
 
-class FPSComponent final : public BaseComponent
+class FPSComponent final : public TextComponent
 {
 public:
 	FPSComponent();
 	~FPSComponent();
+
+	void Update(float dt);
+	void Render();
+
 };

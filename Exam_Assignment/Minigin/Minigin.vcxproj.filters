@@ -1,133 +1,189 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Components">
-      <UniqueIdentifier>{f5fc43a3-76c1-4301-b19a-d03aaad06a60}</UniqueIdentifier>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{d85efe40-646d-4976-bbe9-709c2356779a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content">
-      <UniqueIdentifier>{87ccabcb-3b73-4670-a39e-383992282324}</UniqueIdentifier>
+    <Filter Include="Game Files">
+      <UniqueIdentifier>{bd412838-05f0-4f90-9a1b-ababe14e0b1a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics">
-      <UniqueIdentifier>{f0c0ee7e-25a2-4051-aafd-1e6952ee3741}</UniqueIdentifier>
+    <Filter Include="Engine\Helpers">
+      <UniqueIdentifier>{3a052392-ad52-44d4-839d-d6ee295d00d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scenegraph">
+    <Filter Include="Engine\Scenegraph">
       <UniqueIdentifier>{79dde756-00da-4874-bfb7-3600964c58d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Diagnostic">
+    <Filter Include="Engine\Graphics">
+      <UniqueIdentifier>{f0c0ee7e-25a2-4051-aafd-1e6952ee3741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Diagnostic">
       <UniqueIdentifier>{dac5212a-62da-4fd8-b507-759fad1fdf94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Defaults">
+    <Filter Include="Engine\Defaults">
       <UniqueIdentifier>{3bc8cabe-6c11-4af7-9e3b-6ad267452ffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Content">
+      <UniqueIdentifier>{87ccabcb-3b73-4670-a39e-383992282324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Components">
+      <UniqueIdentifier>{f5fc43a3-76c1-4301-b19a-d03aaad06a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Files\Custom Commands">
+      <UniqueIdentifier>{ebadaff1-57ea-4943-9d3b-cf83d824b626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Files\SceneFiles">
+      <UniqueIdentifier>{ce043b6c-f785-4565-ab4d-afc21971bd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Character">
+      <UniqueIdentifier>{e97cb10f-4977-49e1-8676-4e9a36f42c07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Components.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="TextComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="TextureComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Content</Filter>
+      <Filter>Engine\Content</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Scenegraph</Filter>
+      <Filter>Engine\Scenegraph</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Scenegraph</Filter>
+      <Filter>Engine\Scenegraph</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>Scenegraph</Filter>
+      <Filter>Engine\Scenegraph</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Content</Filter>
+      <Filter>Engine\Content</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
-      <Filter>Content</Filter>
+      <Filter>Engine\Content</Filter>
     </ClInclude>
     <ClInclude Include="MiniginPCH.h">
-      <Filter>Defaults</Filter>
+      <Filter>Engine\Defaults</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
-      <Filter>Diagnostic</Filter>
+      <Filter>Engine\Diagnostic</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>Defaults</Filter>
+      <Filter>Engine\Defaults</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Defaults</Filter>
+      <Filter>Engine\Defaults</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Defaults</Filter>
+      <Filter>Engine\Defaults</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Graphics</Filter>
+      <Filter>Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="FPSComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Engine\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Engine\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCommands.h">
+      <Filter>Game Files\Custom Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="PacManScene.h">
+      <Filter>Game Files\SceneFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Engine\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>Engine\Defaults</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="TextComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="TextureComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="TransformComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
-      <Filter>Content</Filter>
+      <Filter>Engine\Content</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Scenegraph</Filter>
+      <Filter>Engine\Scenegraph</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Scenegraph</Filter>
+      <Filter>Engine\Scenegraph</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>Scenegraph</Filter>
+      <Filter>Engine\Scenegraph</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>Content</Filter>
+      <Filter>Engine\Content</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
-      <Filter>Content</Filter>
+      <Filter>Engine\Content</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">
-      <Filter>Diagnostic</Filter>
+      <Filter>Engine\Diagnostic</Filter>
     </ClCompile>
     <ClCompile Include="MiniginPCH.cpp">
-      <Filter>Defaults</Filter>
+      <Filter>Engine\Defaults</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Defaults</Filter>
+      <Filter>Engine\Defaults</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Minigin.cpp" />
     <ClCompile Include="FPSComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigin.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCommands.cpp">
+      <Filter>Game Files\Custom Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PacManScene.cpp">
+      <Filter>Game Files\SceneFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Engine\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderManager.cpp">
+      <Filter>Engine\Defaults</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

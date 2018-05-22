@@ -5,11 +5,13 @@
 class RenderComponent final : public BaseComponent
 {
 public:
-	RenderComponent(std::shared_ptr<Texture2D> texture);
+	RenderComponent();
 	~RenderComponent();
 
-	void Render() override;
+	void Render();
 	void Update(float dt) override;
+
+	void SetTexture(std::shared_ptr<Texture2D> texture);
 private:
 	std::shared_ptr<Texture2D> mTexture;
 };

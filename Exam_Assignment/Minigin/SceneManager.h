@@ -5,7 +5,8 @@ class Scene;
 class SceneManager final : public Singleton<SceneManager>
 {
 public:
-	Scene & CreateScene(const std::string& name);
+	//Scene & CreateScene(const std::string& name);
+	void AddScene(std::shared_ptr<Scene> scene);
 
 	void Update(float deltaTime);
 	void Render();

@@ -8,6 +8,5 @@ public:
 	~FPSComponent();
 
 	void Update(float dt);
-	void Render();
 
 };

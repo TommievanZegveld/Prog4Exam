@@ -19,9 +19,15 @@ void SceneManager::Render()
 	}
 }
 
-Scene& SceneManager::CreateScene(const std::string& name)
+//Scene& SceneManager::CreateScene(const std::string& name)
+//{
+//	const auto scene = std::shared_ptr<Scene>(new Scene(name));
+//	mScenes.push_back(scene);
+//	return *scene;
+//}
+
+void SceneManager::AddScene(std::shared_ptr<Scene> scene)
 {
-	const auto scene = std::shared_ptr<Scene>(new Scene(name));
 	mScenes.push_back(scene);
-	return *scene;
+	scene->Initialize();
 }

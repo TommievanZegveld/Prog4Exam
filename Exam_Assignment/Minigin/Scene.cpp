@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "Renderer.h"
 
 unsigned int Scene::idCounter = 0;
 
@@ -13,19 +14,21 @@ void Scene::Add(const std::shared_ptr<GameObject>& object)
 	mObjects.push_back(object);
 }
 
-void Scene::Update(const float deltaTime)
+void Scene::Initialize()
 {
-	for(auto gameObject : mObjects)
-	{
-		gameObject->Update(deltaTime);
-	}
 }
+
+//void Scene::Update(const float deltaTime)
+//{
+//	for(auto gameObject : mObjects)
+//	{
+//		gameObject->Update(deltaTime);
+//	}
+//}
 
 void Scene::Render() const
 {
-	for (const auto gameObject : mObjects)
-	{
-		gameObject->Render();
-	}
+	auto& renderer = Renderer::GetInstance();
+	renderer.Render();
 }
 

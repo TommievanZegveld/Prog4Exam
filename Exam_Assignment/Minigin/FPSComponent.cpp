@@ -9,7 +9,7 @@
 
 
 FPSComponent::FPSComponent() : 
-	TextComponent("fps: ", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36))
+	TextComponent("fps: ", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), color{0,255,0})
 {	
 }
 
@@ -27,9 +27,4 @@ void FPSComponent::Update(float dt)
 	//mGameObject->SetPosition(mGameObject->GetTransform()->GetPosition().x + 1, mGameObject->GetTransform()->GetPosition().y + 1);
 
 	TextComponent::Update(dt);
-}
-
-void FPSComponent::Render()
-{
-	TextComponent::Render();
 }

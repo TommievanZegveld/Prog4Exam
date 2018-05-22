@@ -15,20 +15,6 @@ TextureComponent::~TextureComponent()
 {
 }
 
-void TextureComponent::Render()
-{
-	if (mRenderComp == nullptr)
-	{
-		mRenderComp = mGameObject->GetComponent<RenderComponent>();
-		if (mRenderComp == nullptr)
-		{
-			mRenderComp = new RenderComponent(mTexture);
-			mGameObject->AddComponent(mRenderComp);
-		}
-	}
-	mRenderComp->Render();
-}
-
 void TextureComponent::Update(float deltaTime)
 {
 	UNREFERENCED_PARAMETER(deltaTime);
@@ -36,5 +22,12 @@ void TextureComponent::Update(float deltaTime)
 
 void TextureComponent::SetTexture(const std::string& fileName)
 {
+	auto mRenderComp = mGameObject->GetComponent<RenderComponent>();
+	if (mRenderComp == nullptr)
+	{
+		std::cout << "Did you try setting a texture on a texture component without first adding a render component?" << std::endl;
+		return;
+	}
 	mTexture = ResourceManager::GetInstance().LoadTexture(fileName);
+	mRenderComp->SetTexture(mTexture);
 }

@@ -3,10 +3,13 @@
 #include <SDL.h>
 #include "SceneManager.h"
 #include "Texture2D.h"
+#include "RenderComponent.h"
+
+#include <chrono>
 
 void Renderer::Init(SDL_Window * window)
 {
-	mRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	mRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED );
 	if (mRenderer == nullptr) {
 		std::stringstream ss; ss << "SDL_CreateRenderer Error: " << SDL_GetError();
 		throw std::runtime_error(ss.str().c_str());
@@ -17,9 +20,18 @@ void Renderer::Render()
 {
 	SDL_RenderClear(mRenderer);
 
-	SceneManager::GetInstance().Render();
-	
+	for (size_t i = 0; i < m_RenderComponents.size(); i++)
+	{
+		m_RenderComponents[i]->Render();
+	}
+
+	auto then3 = std::chrono::high_resolution_clock::now();
 	SDL_RenderPresent(mRenderer);
+	auto now3 = std::chrono::high_resolution_clock::now();
+	auto test3 = std::chrono::duration<float>(now3 - then3);
+
+	//std::cout << "Render Call from Renderer: " << test3.count() << std::endl;
+	
 }
 
 void Renderer::Destroy()
@@ -29,6 +41,12 @@ void Renderer::Destroy()
 		SDL_DestroyRenderer(mRenderer);
 		mRenderer = nullptr;
 	}
+
+	//for (size_t i = 0; i < m_RenderComponents.size(); i++)
+	//{
+	//	m_RenderComponents[i] = nullptr;
+	//}
+	//m_RenderComponents.clear();
 }
 
 void Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const

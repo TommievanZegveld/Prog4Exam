@@ -12,7 +12,6 @@ public:
 	GameObject* GetGameObject() const;
 
 	virtual void Update(float deltaTime) = 0;
-	virtual void Render() = 0;
 
 protected:
 	friend class GameObject;

@@ -6,3 +6,4 @@
 #include "TextureComponent.h"
 #include "RenderComponent.h"
 #include "FPSComponent.h"
+#include "ColliderComponent.h"

@@ -5,12 +5,15 @@
 #include "Renderer.h"
 #include "Font.h"
 #include "RenderComponent.h"
+#include "types.h"
 
 
-TextComponent::TextComponent(const std::string& text, std::shared_ptr<Font> font) :
+TextComponent::TextComponent(const std::string& text, std::shared_ptr<Font> font, color col) :
 	mNeedsUpdate(true),
 	mText(text),
-	mFont(font)
+	mFont(font),
+	mTextColor(col)
+	
 {
 }
 
@@ -24,7 +27,7 @@ void TextComponent::Update(float deltaTime)
 	UNREFERENCED_PARAMETER(deltaTime);
 	if (mNeedsUpdate)
 	{
-		const SDL_Color color = { 255,255,255 }; // only white text is supported now
+		const SDL_Color color = { mTextColor.r,mTextColor.g,mTextColor.b }; // only white text is supported now
 		const auto surf = TTF_RenderText_Blended(mFont->GetFont(), mText.c_str(), color);
 		if (surf == nullptr) {
 			std::stringstream ss; ss << "Render text failed: " << SDL_GetError();
@@ -37,21 +40,15 @@ void TextComponent::Update(float deltaTime)
 		}
 		SDL_FreeSurface(surf);
 		mTexture = std::make_shared<Texture2D>(texture);
-	}
-}
 
-void TextComponent::Render()
-{
-	if (mRenderComp == nullptr)
-	{
-		mRenderComp = mGameObject->GetComponent<RenderComponent>();
+		auto mRenderComp = mGameObject->GetComponent<RenderComponent>();
 		if (mRenderComp == nullptr)
 		{
-			mRenderComp = new RenderComponent(mTexture);
-			mGameObject->AddComponent(mRenderComp);
+			std::cout << "Did you try updating a text component with a new text without first adding a rendercomponent?" << std::endl;
+			return;
 		}
+		mRenderComp->SetTexture(mTexture);
 	}
-	mRenderComp->Render();
 }
 
 void TextComponent::SetText(const std::string& text)
@@ -64,4 +61,10 @@ void TextComponent::SetFont(std::shared_ptr<Font> font)
 {
 	mFont = font;
 	mNeedsUpdate = true;
+}
+
+void TextComponent::SetColor(color col)
+{
+	mNeedsUpdate = true;
+	mTextColor = col;
 }

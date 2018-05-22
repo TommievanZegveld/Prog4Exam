@@ -8,14 +8,13 @@ class GameObject
 {
 public:
 	void Update(float deltaTime);
-	void Render() const;
 
-	TransformComponent* GetTransform() const { return mTransform; }
+	std::shared_ptr<TransformComponent> GetTransform() const { return mTransform; }
 
 	void SetPosition(float x, float y);
 
-	void AddComponent(BaseComponent* component);
-	template<class T> T* GetComponent();
+	void AddComponent(std::shared_ptr<BaseComponent> component);
+	template<class T> std::shared_ptr<T> GetComponent();
 
 	GameObject();
 	virtual ~GameObject();
@@ -25,18 +24,18 @@ public:
 	GameObject& operator=(GameObject&& other) = delete;
 
 private:
-	TransformComponent* mTransform;
-	std::vector<BaseComponent*> mComponents;
+	std::shared_ptr<TransformComponent> mTransform;
+	std::vector<std::shared_ptr<BaseComponent>> mComponents;
 };
 
 template <class T>
-T* GameObject::GetComponent()
+std::shared_ptr<T> GameObject::GetComponent()
 {
 	const type_info& ti = typeid(T);
-	for (auto *component : mComponents)
+	for (auto component : mComponents)
 	{
 		if (component && typeid(*component) == ti)
-			return static_cast<T*>(component);
+			return std::dynamic_pointer_cast<T>(component);
 	}
 	return nullptr;
 }

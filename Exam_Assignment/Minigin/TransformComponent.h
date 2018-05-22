@@ -11,7 +11,6 @@ public:
 	TransformComponent();
 	~TransformComponent();
 
-	void Render();
 	void Update(float deltaTime);
 
 	const glm::vec3& GetPosition() const { return mPosition; }

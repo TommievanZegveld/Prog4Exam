@@ -11,10 +11,6 @@ TransformComponent::~TransformComponent()
 {
 }
 
-void TransformComponent::Render()
-{
-}
-
 void TransformComponent::Update(float deltaTime)
 {
 	UNREFERENCED_PARAMETER(deltaTime);

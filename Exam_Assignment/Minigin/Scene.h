@@ -4,11 +4,13 @@
 class GameObject;
 class Scene
 {
-	friend Scene& SceneManager::CreateScene(const std::string& name);
+//	friend Scene& SceneManager::CreateScene(const std::string& name);
 public:
 	void Add(const std::shared_ptr<GameObject>& object);
+	virtual void Initialize();
 
-	void Update(float deltaTime);
+	Scene(const std::string& name);
+	virtual void Update(float deltaTime) = 0;
 	void Render() const;
 
 	~Scene();
@@ -17,11 +19,11 @@ public:
 	Scene& operator=(const Scene& other) = delete;
 	Scene& operator=(Scene&& other) = delete;
 
+protected:
+	std::vector < std::shared_ptr<GameObject>> mObjects{};
 private:
-	explicit Scene(const std::string& name);
 
 	std::string mName{};
-	std::vector < std::shared_ptr<GameObject>> mObjects{};
 
 	static unsigned int idCounter;
 };

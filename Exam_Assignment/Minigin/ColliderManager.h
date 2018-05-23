@@ -16,12 +16,18 @@ public:
 	void AddStatic(std::shared_ptr<ColliderComponent> col) { mStaticColliders.push_back(col); }
 	void AddTrigger(std::shared_ptr<ColliderComponent> col) { mTriggerColliders.push_back(col); }
 
-	bool CheckCollision(std::shared_ptr<GameObject> gameObj); //True if nothing is hit
+	void RemoveCollider(std::shared_ptr<GameObject> obj);
+
+	bool CheckCollision(std::shared_ptr<GameObject> gameObj);
+
+	std::shared_ptr<ColliderComponent> GetCollider();
 
 private:
 
 	std::vector<std::shared_ptr<ColliderComponent>> mDynamicColliders;
 	std::vector<std::shared_ptr<ColliderComponent>> mStaticColliders;
 	std::vector<std::shared_ptr<ColliderComponent>> mTriggerColliders;
+
+	std::shared_ptr<ColliderComponent> mCollider;
 };
 

@@ -24,7 +24,5 @@ void FPSComponent::Update(float dt)
 	std::string fpsString("fps: " + std::to_string(fps));
 	SetText(fpsString);
 
-	//mGameObject->SetPosition(mGameObject->GetTransform()->GetPosition().x + 1, mGameObject->GetTransform()->GetPosition().y + 1);
-
 	TextComponent::Update(dt);
 }

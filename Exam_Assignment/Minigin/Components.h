@@ -7,3 +7,4 @@
 #include "RenderComponent.h"
 #include "FPSComponent.h"
 #include "ColliderComponent.h"
+#include "RectangleComponent.h"

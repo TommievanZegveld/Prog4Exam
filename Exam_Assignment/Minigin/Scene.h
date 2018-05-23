@@ -12,6 +12,7 @@ public:
 	Scene(const std::string& name);
 	virtual void Update(float deltaTime) = 0;
 	void Render() const;
+	void DestroyObjects();
 
 	~Scene();
 	Scene(const Scene& other) = delete;
@@ -21,6 +22,7 @@ public:
 
 protected:
 	std::vector < std::shared_ptr<GameObject>> mObjects{};
+	std::vector < std::shared_ptr<GameObject>> mToDelete{};
 private:
 
 	std::string mName{};

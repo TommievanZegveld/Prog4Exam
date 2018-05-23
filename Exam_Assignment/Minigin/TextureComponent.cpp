@@ -22,11 +22,13 @@ void TextureComponent::Update(float deltaTime)
 
 void TextureComponent::SetTexture(const std::string& fileName)
 {
+	if(!mGameObject)
+		throw std::runtime_error("You tried setting a texture in TextureComponent without first adding it to the GameObject");
+
 	auto mRenderComp = mGameObject->GetComponent<RenderComponent>();
-	if (mRenderComp == nullptr)
+	if (!mRenderComp)
 	{
-		std::cout << "Did you try setting a texture on a texture component without first adding a render component?" << std::endl;
-		return;
+		throw std::runtime_error("Did you try setting a texture on a texture component without first adding a render component?");
 	}
 	mTexture = ResourceManager::GetInstance().LoadTexture(fileName);
 	mRenderComp->SetTexture(mTexture);

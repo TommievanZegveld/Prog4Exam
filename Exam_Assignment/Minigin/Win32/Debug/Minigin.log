@@ -1,23 +1,17 @@
 ﻿  PacManScene.cpp
-c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1712): error C2664: 'ColliderComponent::ColliderComponent(const ColliderComponent &)': cannot convert argument 1 from 'ColliderType' to 'const ColliderComponent &'
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1712): note: Reason: cannot convert from 'ColliderType' to 'const ColliderComponent'
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1712): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1778): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<ColliderType>(ColliderType &&)' being compiled
-          with
-          [
-              _Ty=ColliderComponent
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.11.25503\include\memory(1778): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<ColliderType>(ColliderType &&)' being compiled
-          with
-          [
-              _Ty=ColliderComponent
-          ]
-  c:\develop\prog4exam\exam_assignment\minigin\pacmanscene.cpp(74): note: see reference to function template instantiation 'std::shared_ptr<ColliderComponent> std::make_shared<ColliderComponent,ColliderType>(ColliderType &&)' being compiled
-  ColliderManager.cpp
-c:\develop\prog4exam\exam_assignment\minigin\collidermanager.cpp(14): error C2220: warning treated as error - no 'object' file generated
-c:\develop\prog4exam\exam_assignment\minigin\collidermanager.cpp(14): warning C4100: 'deltaTime': unreferenced formal parameter
-  ColliderComponent.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Minigin.cpp
   GameObject.cpp
+  Generating Code...
+  Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.exe
+  Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.pdb (Partial PDB)
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x86\SDL2.dll
+  1 File(s) copied
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x86\libjpeg-9.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x86\libpng16-16.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x86\libtiff-5.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x86\libwebp-7.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x86\SDL2_image.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x86\zlib1.dll
+  6 File(s) copied
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x86\libfreetype-6.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x86\SDL2_ttf.dll
+  2 File(s) copied

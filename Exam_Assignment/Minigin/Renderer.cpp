@@ -4,8 +4,10 @@
 #include "SceneManager.h"
 #include "Texture2D.h"
 #include "RenderComponent.h"
+#include "GameObject.h"
 
 #include <chrono>
+#include <algorithm>
 
 void Renderer::Init(SDL_Window * window)
 {
@@ -18,8 +20,6 @@ void Renderer::Init(SDL_Window * window)
 
 void Renderer::Render()
 {
-	SDL_RenderClear(mRenderer);
-
 	for (size_t i = 0; i < m_RenderComponents.size(); i++)
 	{
 		m_RenderComponents[i]->Render();
@@ -30,8 +30,10 @@ void Renderer::Render()
 	auto now3 = std::chrono::high_resolution_clock::now();
 	auto test3 = std::chrono::duration<float>(now3 - then3);
 
+	SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
+	SDL_RenderClear(mRenderer);
 	//std::cout << "Render Call from Renderer: " << test3.count() << std::endl;
-	
+
 }
 
 void Renderer::Destroy()
@@ -41,12 +43,6 @@ void Renderer::Destroy()
 		SDL_DestroyRenderer(mRenderer);
 		mRenderer = nullptr;
 	}
-
-	//for (size_t i = 0; i < m_RenderComponents.size(); i++)
-	//{
-	//	m_RenderComponents[i] = nullptr;
-	//}
-	//m_RenderComponents.clear();
 }
 
 void Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const
@@ -66,4 +62,14 @@ void Renderer::RenderTexture(const Texture2D& texture, const float x, const floa
 	dst.w = static_cast<int>(width);
 	dst.h = static_cast<int>(height);
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
+}
+
+void Renderer::RemoveRenderComponent(std::shared_ptr<GameObject> obj)
+{
+	UNREFERENCED_PARAMETER(obj);
+	auto comp = obj->GetComponent<RenderComponent>();
+	if (std::find(m_RenderComponents.begin(), m_RenderComponents.end(), comp) != m_RenderComponents.end())
+	{
+		m_RenderComponents.erase(std::remove(m_RenderComponents.begin(), m_RenderComponents.end(), comp));
+	}
 }

@@ -15,6 +15,7 @@ bool InputManager::ProcessInput()
 		if (dwResult == ERROR_SUCCESS)
 		{
 			//	Controller is connected
+
 			//	The Game Objects in our mGameObjects and our GameController enum are mapped 1:1
 			//	So we check wether that game object exists; for example; we might map the buttons to a controller
 			//	But we might not attach a gameobject to this controller yet; this check makes sure we don't call functions on nullptr

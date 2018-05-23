@@ -27,7 +27,7 @@ void TextComponent::Update(float deltaTime)
 	UNREFERENCED_PARAMETER(deltaTime);
 	if (mNeedsUpdate)
 	{
-		const SDL_Color color = { mTextColor.r,mTextColor.g,mTextColor.b }; // only white text is supported now
+		const SDL_Color color = { mTextColor.r,mTextColor.g,mTextColor.b };
 		const auto surf = TTF_RenderText_Blended(mFont->GetFont(), mText.c_str(), color);
 		if (surf == nullptr) {
 			std::stringstream ss; ss << "Render text failed: " << SDL_GetError();

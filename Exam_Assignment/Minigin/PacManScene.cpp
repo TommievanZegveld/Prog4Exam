@@ -6,6 +6,12 @@
 #include "ResourceManager.h"
 #include "InputManager.h"
 #include "GameCommands.h"
+#include "ColliderManager.h"
+
+#include "Pacman.h"
+#include "Wall.h"
+#include "GameObject.h"
+#include <algorithm>
 
 PacManScene::PacManScene() : Scene("Pacman Scene")
 {
@@ -49,34 +55,37 @@ void PacManScene::Initialize()
 	input.BindKeyboardKey(GameController::KeyBoard2, SDL_SCANCODE_LEFT, leftCommand);
 	input.BindKeyboardKey(GameController::KeyBoard2, SDL_SCANCODE_RIGHT, rightCommand);
 
-	auto go4 = std::make_shared<GameObject>();
-	auto fpsComp = std::make_shared<FPSComponent>();
-	auto rendComp = std::make_shared<RenderComponent>();
-	go4->AddComponent(rendComp);
-	go4->AddComponent(fpsComp);
-	go4->SetPosition(10, 10);
-	Add(go4);
+	//auto go4 = std::make_shared<GameObject>();
+	//auto fpsComp = std::make_shared<FPSComponent>();
+	//auto rendComp = std::make_shared<RenderComponent>();
+	//go4->AddComponent(rendComp);
+	//go4->AddComponent(fpsComp);
+	//go4->SetPosition(30, 30);
+	//Add(go4);
 
-	auto player1 = std::make_shared<Character>();
-	auto rendCompp = std::make_shared<RenderComponent>();
-	player1->AddComponent(std::make_shared<RenderComponent>());
-	auto textComp = std::make_shared<TextureComponent>();
-	player1->AddComponent(textComp);
-	textComp->SetTexture("pacman.png");
+	auto player1 = std::make_shared<Pacman>();
 	Add(player1);
 	mActivePlayers.push_back(player1);
 
-	auto player2 = std::make_shared<Character>();
-	player2->AddComponent(std::make_shared<RenderComponent>());
-	auto textComp2 = std::make_shared<TextureComponent>();
-	player2->AddComponent(textComp2);
-	textComp2->SetTexture("pacman.png");
-	auto colComp = std::make_shared<ColliderComponent>(ColliderType::DYNAMIC,52,52);
-	Add(player2);
-	mActivePlayers.push_back(player2);
+	//auto player2 = std::make_shared<Pacman>()->GetPacmanObject();
+	//Add(player2);
+	//mActivePlayers.push_back(player2);
+
+	auto wall1 = std::make_shared<Wall>(glm::vec2(300, 300), 200, 20);
+	Add(wall1);
+
+	//auto wall = std::make_shared<GameObject>();
+	//auto rend = std::make_shared<RenderComponent>();
+	//wall->AddComponent(rend);
+	//auto text = std::make_shared<TextureComponent>();
+	//wall->AddComponent(text);
+	//text->SetTexture("red.png");
+	//wall->SetPosition(160, 160);
+	//wall->AddComponent(std::make_shared<ColliderComponent>(wall->GetTransform()->GetPosition(), (float)rend->GetTextureSize().width, (float)rend->GetTextureSize().height, ColliderType::STATIC));
+	////Add(wall);
 
 	input.SetPlayer(GameController::Controller1, mActivePlayers[0]);
-	input.SetPlayer(GameController::Controller2, mActivePlayers[1]);
+	//input.SetPlayer(GameController::KeyBoard2, mActivePlayers[1]);
 }
 
 void PacManScene::Update(float deltaTime)
@@ -86,31 +95,73 @@ void PacManScene::Update(float deltaTime)
 		gameObject->Update(deltaTime);
 	}
 
+	auto& collision = ColliderManager::GetInstance();
+
 	for (auto character : mActivePlayers)
 	{
 		auto dir = character->GetDirection();
 		auto speed = 100.f * deltaTime;
+		auto offset = speed * 1.0f;
+
 		switch (dir)
 		{
 		case Direction::UP:
-			character->GetTransform()->Move(0, -speed, 0);
+			character->GetTransform()->Move(0, -speed);
 			break;
 		case Direction::LEFT:
-			character->GetTransform()->Move(-speed, 0, 0);
+			character->GetTransform()->Move(-speed, 0);
 			break;
 		case Direction::RIGHT:
-			character->GetTransform()->Move(speed, 0, 0);
+			character->GetTransform()->Move(speed, 0);
 			break;
 		case Direction::DOWN:
-			character->GetTransform()->Move(0, speed, 0);
+			character->GetTransform()->Move(0, speed);
 			break;
 		case Direction::NONE:
-			character->GetTransform()->Move(0, 0, 0);
+			character->GetTransform()->Move(0, 0);
 			break;
 		default:
 			break;
 		}
+
+		if (collision.CheckCollision(character))
+		{
+			switch (dir)
+			{
+			case Direction::UP:
+				character->GetTransform()->Move(0, speed + offset);
+				break;
+			case Direction::LEFT:
+				character->GetTransform()->Move(speed + offset, 0);
+				break;
+			case Direction::RIGHT:
+				character->GetTransform()->Move(-(speed + offset), 0);
+				break;
+			case Direction::DOWN:
+				character->GetTransform()->Move(0, -(speed + offset));
+				break;
+			default:
+				break;
+			}
+			character->SetDirection(Direction::NONE);
+
+			//auto collider = collision.GetCollider();
+
+			//auto dynCast = std::dynamic_pointer_cast<Wall>(std::make_shared<GameObject>(*collider->GetGameObject()));
+
+			//if(dynCast)
+			//{
+			//	for (size_t i = 0; i < mObjects.size(); i++)
+			//	{
+			//		if (colliderObj == mObjects[i])
+			//			mToDelete.push_back(mObjects[i]);
+			//	}
+			//	std::cout << "WALL" << std::endl;
+			//}
+		}
 	}
+
+	DestroyObjects();
 }
 
 

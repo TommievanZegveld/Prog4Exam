@@ -14,7 +14,7 @@ BaseComponent::~BaseComponent()
 {
 }
 
-GameObject * BaseComponent::GetGameObject() const
+GameObject* BaseComponent::GetGameObject() const
 {
 	return mGameObject;
 }

@@ -1,6 +1,4 @@
-c:\develop\prog4exam\exam_assignment\minigin\win32\release\minigin.pch
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\vc141.pdb
-c:\develop\prog4exam\exam_assignment\minigin\win32\release\miniginpch.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\transformcomponent.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\texturecomponent.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\texture2d.obj
@@ -17,6 +15,14 @@ c:\develop\prog4exam\exam_assignment\minigin\win32\release\gameobject.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\fpscomponent.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\font.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\release\basecomponent.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\pacmanscene.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\gamecommands.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\character.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\collidermanager.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\collidercomponent.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\minigin.pch
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\miniginpch.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\release\pacman.obj
 c:\develop\prog4exam\exam_assignment\win32\release\minigin.exe
 c:\develop\prog4exam\exam_assignment\win32\release\minigin.pdb
 c:\develop\prog4exam\exam_assignment\win32\release\minigin.lib

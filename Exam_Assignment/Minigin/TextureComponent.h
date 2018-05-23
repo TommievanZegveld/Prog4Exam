@@ -13,6 +13,7 @@ public:
 
 	void SetTexture(const std::string& fileName);
 
+
 	TextureComponent(const TextureComponent &) = delete;
 	TextureComponent(TextureComponent &&) = delete;
 	TextureComponent & operator= (const TextureComponent &) = delete;

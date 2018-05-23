@@ -7,6 +7,8 @@ struct SDL_Renderer;
 class RenderComponent;
 
 class Texture2D;
+class GameObject;
+
 class Renderer final : public Singleton<Renderer>
 {
 	SDL_Renderer* mRenderer = nullptr;
@@ -18,6 +20,8 @@ public:
 
 	void RenderTexture(const Texture2D& texture, float x, float y) const;
 	void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
+
+	void RemoveRenderComponent(std::shared_ptr<GameObject> obj);
 
 	SDL_Renderer* GetSDLRenderer() const { return mRenderer; }
 

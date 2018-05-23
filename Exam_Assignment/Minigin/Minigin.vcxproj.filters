@@ -37,6 +37,12 @@
     <Filter Include="Engine\Character">
       <UniqueIdentifier>{e97cb10f-4977-49e1-8676-4e9a36f42c07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Files\Game Characters">
+      <UniqueIdentifier>{6fe19962-8f8a-4ebf-9623-01494bd0e068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Files\Game Items">
+      <UniqueIdentifier>{e1a94390-c68a-4b22-80f2-98403eb78ce9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h">
@@ -117,6 +123,18 @@
     <ClInclude Include="ColliderManager.h">
       <Filter>Engine\Defaults</Filter>
     </ClInclude>
+    <ClInclude Include="Pacman.h">
+      <Filter>Game Files\Game Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Game Files\Game Items</Filter>
+    </ClInclude>
+    <ClInclude Include="RectangleComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PickUp.h">
+      <Filter>Game Files\Game Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
@@ -184,6 +202,18 @@
     </ClCompile>
     <ClCompile Include="ColliderManager.cpp">
       <Filter>Engine\Defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="Pacman.cpp">
+      <Filter>Game Files\Game Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Game Files\Game Items</Filter>
+    </ClCompile>
+    <ClCompile Include="RectangleComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUp.cpp">
+      <Filter>Game Files\Game Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

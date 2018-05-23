@@ -1,5 +1,10 @@
 #pragma once
 #include "BaseComponent.h"
+#pragma warning (disable:4201)
+#include <glm/detail/type_vec2.hpp>
+
+
+class TransformComponent;
 
 enum class ColliderType
 {
@@ -11,13 +16,18 @@ class ColliderComponent final : public BaseComponent
 {
 public:
 
-	ColliderComponent(ColliderType t, int width, int height);
+	ColliderComponent(glm::vec2 pos,float width, float height,ColliderType t);
 	~ColliderComponent();
 
-	void Update(float dT);
+	void Update(float deltaTime);
+	bool isColliding(ColliderComponent& other);
+
+protected:
+	friend class GameObject;
+	ColliderType mType;
 
 private:
-	ColliderType mType;
-	int mWidth, mHeight;
+	float mWidth, mHeight;
+	glm::vec2 mPosition;
 };
 

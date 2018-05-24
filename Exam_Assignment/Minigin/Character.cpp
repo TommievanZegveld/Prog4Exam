@@ -16,3 +16,8 @@ void Character::SetDirection(Direction dir)
 	mCurrentDir = dir;
 }
 
+void Character::SetNextDirection(Direction dir)
+{
+	mNextDir = dir;
+}
+

@@ -25,10 +25,8 @@ public:
 	GameObject& operator=(const GameObject& other) = delete;
 	GameObject& operator=(GameObject&& other) = delete;
 
-protected:
-	friend class Character;
-	std::vector<std::shared_ptr<BaseComponent>> mComponents;
 
+	std::vector<std::shared_ptr<BaseComponent>> mComponents;
 private:
 	std::shared_ptr<TransformComponent> mTransform;
 };

@@ -1,31 +1,9 @@
-﻿  BaseComponent.cpp
-  Character.cpp
-  ColliderComponent.cpp
-  ColliderManager.cpp
-  FPSComponent.cpp
-  GameCommands.cpp
-  GameObject.cpp
-  InputManager.cpp
-  Minigin.cpp
-  Pacman.cpp
-  PacManScene.cpp
-  PickUp.cpp
-  RectangleComponent.cpp
-  RenderComponent.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  TextComponent.cpp
-  TextureComponent.cpp
-  Compiling...
-  TransformComponent.cpp
-  Wall.cpp
+﻿  PickUp.cpp
      Creating library C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.lib and object C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.exp
   Generating code
-  350 of 1540 functions (22.7%) were compiled, the rest were copied from previous compilation.
-    179 functions were new in current compilation
-    187 functions had inline decision re-evaluated but remain unchanged
+  0 of 1971 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    45 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.exe
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.pdb (Full PDB)

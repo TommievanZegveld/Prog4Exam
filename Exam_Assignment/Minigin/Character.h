@@ -17,8 +17,14 @@ public:
 	~Character();
 
 	void SetDirection(Direction dir);
+	void SetNextDirection(Direction dir);
 	Direction GetDirection() const { return mCurrentDir; }
-private:
+
+	void SetSpeed(float speed) {mSpeed = speed; }
+	float GetSpeed() { return mSpeed; }
+protected:
 	Direction mCurrentDir;
+	Direction mNextDir;
+	float mSpeed = 100.f;
 };
 

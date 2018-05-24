@@ -13,6 +13,7 @@
 #include "GameObject.h"
 #include "PickUp.h"
 #include <algorithm>
+#include "LevelLoader.h"
 
 PacManScene::PacManScene() : Scene("Pacman Scene")
 {
@@ -56,120 +57,72 @@ void PacManScene::Initialize()
 	input.BindKeyboardKey(GameController::KeyBoard2, SDL_SCANCODE_LEFT, leftCommand);
 	input.BindKeyboardKey(GameController::KeyBoard2, SDL_SCANCODE_RIGHT, rightCommand);
 
+	auto level = std::make_shared<LevelLoader>("level.csv");
+	auto walls = level->GetWalls();
+	for (auto wall : walls)
+		Add(wall);
+	auto pickups = level->GetPickUps();
+	for (auto pick : pickups)
+		Add(pick);
+
 	auto go4 = std::make_shared<GameObject>();
 	Add(go4);
 	auto rendComp = std::make_shared<RenderComponent>();
 	go4->AddComponent(rendComp);
 	auto fpsComp = std::make_shared<FPSComponent>();
 	go4->AddComponent(fpsComp);
-	go4->SetPosition(100, 40);
+	go4->SetPosition(550, 440);
 
 	auto player1 = std::make_shared<Pacman>();
 	Add(player1);
+	player1->SetPosition(224, 266);
 	mActivePlayers.push_back(player1);
 
-	//auto player2 = std::make_shared<Pacman>()->GetPacmanObject();
-	//Add(player2);
-	//mActivePlayers.push_back(player2);
+	auto scoreObj = std::make_shared<GameObject>();
+	Add(scoreObj);
+	scoreObj->AddComponent(std::make_shared<RenderComponent>());
+	auto textComp = std::make_shared<TextComponent>("Score: 0", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{ 255, 255, 255 });
+	scoreObj->AddComponent(textComp);
 
-	auto wall1 = std::make_shared<Wall>(glm::vec2(300, 300), 200, 20);
-	Add(wall1);
+	scoreObj->SetPosition(550, 30);
+	mScoreObjects.push_back(scoreObj);
 
+	auto player2 = std::make_shared<Pacman>();
+	Add(player2);
+	player2->SetPosition(224, 174);
+	mActivePlayers.push_back(player2);
 
-	auto pickup1 = std::make_shared<PickUp>(glm::vec2(250, 250));
-	Add(pickup1);
+	auto scoreObj2 = std::make_shared<GameObject>();
+	Add(scoreObj2);
+	scoreObj2->AddComponent(std::make_shared<RenderComponent>());
+	auto textComp2 = std::make_shared<TextComponent>("Score: 0", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{ 255, 255, 255 });
+	scoreObj2->AddComponent(textComp2);
+	scoreObj2->SetPosition(550, 130);
+	mScoreObjects.push_back(scoreObj2);
 
-	//auto wall = std::make_shared<GameObject>();
-	//auto rend = std::make_shared<RenderComponent>();
-	//wall->AddComponent(rend);
-	//auto text = std::make_shared<TextureComponent>();
-	//wall->AddComponent(text);
-	//text->SetTexture("red.png");
-	//wall->SetPosition(160, 160);
-	//wall->AddComponent(std::make_shared<ColliderComponent>(wall->GetTransform()->GetPosition(), (float)rend->GetTextureSize().width, (float)rend->GetTextureSize().height, ColliderType::STATIC));
-	////Add(wall);
-
-	input.SetPlayer(GameController::Controller1, mActivePlayers[0]);
-	//input.SetPlayer(GameController::KeyBoard2, mActivePlayers[1]);
+	input.SetPlayer(GameController::KeyBoard1, mActivePlayers[0]);
+	input.SetPlayer(GameController::KeyBoard2, mActivePlayers[1]);
 }
 
 void PacManScene::Update(float deltaTime)
 {
-	for(auto gameObject : mObjects)
+	Scene::Update(deltaTime);
+
+	// Ask Pacman object what collided objects to destroy;
+	//	If it hits a pickup for example; it flags it in it's update for destruction
+	for (size_t i = 0; i < mActivePlayers.size(); i++)
 	{
-		gameObject->Update(deltaTime);
-	}
-
-	auto& collision = ColliderManager::GetInstance();
-
-	for (auto character : mActivePlayers)
-	{
-		auto dir = character->GetDirection();
-		auto speed = 100.f * deltaTime;
-		auto offset = speed * 10.f;
-
-		switch (dir)
+		auto score = 0;
+		auto pacManCast = std::dynamic_pointer_cast<Pacman>(mActivePlayers[i]);
+		if (pacManCast)
 		{
-		case Direction::UP:
-			character->GetTransform()->Move(0, -speed);
-			break;
-		case Direction::LEFT:
-			character->GetTransform()->Move(-speed, 0);
-			break;
-		case Direction::RIGHT:
-			character->GetTransform()->Move(speed, 0);
-			break;
-		case Direction::DOWN:
-			character->GetTransform()->Move(0, speed);
-			break;
-		case Direction::NONE:
-			character->GetTransform()->Move(0, 0);
-			break;
-		default:
-			break;
+			auto toDestroy = pacManCast->GetDestroyFlaggedActor();
+			for (auto des : toDestroy)
+				FlagForDestruction(des);
+			score = pacManCast->GetScore();
 		}
-
-		if (collision.CheckCollision(character))
-		{
-			switch (dir)
-			{
-			case Direction::UP:
-				character->GetTransform()->Move(0, speed + offset);
-				break;
-			case Direction::LEFT:
-				character->GetTransform()->Move(speed + offset, 0);
-				break;
-			case Direction::RIGHT:
-				character->GetTransform()->Move(-(speed + offset), 0);
-				break;
-			case Direction::DOWN:
-				character->GetTransform()->Move(0, -(speed + offset));
-				break;
-			default:
-				break;
-			}
-
-			auto collider = collision.GetCollider();
-			auto obj = collider->GetGameObject();
-			auto dynCast = std::dynamic_pointer_cast<Wall>(obj.lock());
-
-			if(dynCast)
-			{
-				std::cout << "WALL" << std::endl;
-				character->SetDirection(Direction::NONE);
-			}
-
-			auto dynCast2 = std::dynamic_pointer_cast<PickUp>(obj.lock());
-			if(dynCast2)
-			{
-				for (size_t i = 0; i < mObjects.size(); i++)
-				{
-					if (obj.lock() == mObjects[i])
-						mToDelete.push_back(mObjects[i]);
-				}
-				std::cout << "PICKUP BABY" << std::endl;
-			}
-		}
+		auto text = "Score: " + std::to_string(score);
+		mScoreObjects[i]->GetComponent<TextComponent>()->SetText(text);
 	}
 
 	DestroyObjects();

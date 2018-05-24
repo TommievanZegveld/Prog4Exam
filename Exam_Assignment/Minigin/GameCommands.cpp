@@ -7,7 +7,7 @@ void UpCommand::execute(std::weak_ptr<GameObject>& gameObj)
 	auto character = std::dynamic_pointer_cast<Character>(gameObj.lock());
 	if(character)
 	{	
-		character->SetDirection(Direction::UP);
+		character->SetNextDirection(Direction::UP);
 		//std::cout << "Up command pressed" << std::endl;
 	}
 }
@@ -17,7 +17,7 @@ void DownCommand::execute(std::weak_ptr<GameObject>& gameObj)
 	auto character = std::dynamic_pointer_cast<Character>(gameObj.lock());
 	if (character)
 	{
-		character->SetDirection(Direction::DOWN);
+		character->SetNextDirection(Direction::DOWN);
 		//std::cout << "Down command pressed" << std::endl;
 	}
 }
@@ -27,7 +27,7 @@ void LeftCommand::execute(std::weak_ptr<GameObject>& gameObj)
 	auto character = std::dynamic_pointer_cast<Character>(gameObj.lock());
 	if (character)
 	{
-		character->SetDirection(Direction::LEFT);
+		character->SetNextDirection(Direction::LEFT);
 		//std::cout << "Left command pressed" << std::endl;
 	}
 }
@@ -37,7 +37,7 @@ void RightCommand::execute(std::weak_ptr<GameObject>& gameObj)
 	auto character = std::dynamic_pointer_cast<Character>(gameObj.lock());
 	if (character)
 	{
-		character->SetDirection(Direction::RIGHT);
+		character->SetNextDirection(Direction::RIGHT);
 		//std::cout << "Right command pressed" << std::endl;
 	}
 }

@@ -43,6 +43,9 @@
     <Filter Include="Game Files\Game Items">
       <UniqueIdentifier>{e1a94390-c68a-4b22-80f2-98403eb78ce9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Files\LevelLoader">
+      <UniqueIdentifier>{225d54dd-e9f9-489b-9077-be348f7cd0bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h">
@@ -135,6 +138,12 @@
     <ClInclude Include="PickUp.h">
       <Filter>Game Files\Game Items</Filter>
     </ClInclude>
+    <ClInclude Include="parser.hpp">
+      <Filter>Engine\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>Game Files\LevelLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
@@ -214,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="PickUp.cpp">
       <Filter>Game Files\Game Items</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>Game Files\LevelLoader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

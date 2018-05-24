@@ -1,25 +1,4 @@
-﻿  Pacman.cpp
-  Generating Code...
-  Compiling...
-  Wall.cpp
-  TextureComponent.cpp
-  TextComponent.cpp
-  Scene.cpp
-  Renderer.cpp
-  RenderComponent.cpp
-  RectangleComponent.cpp
-  PickUp.cpp
-  PacManScene.cpp
-  Minigin.cpp
-  InputManager.cpp
-  GameObject.cpp
-  GameCommands.cpp
-  FPSComponent.cpp
-  ColliderManager.cpp
-  ColliderComponent.cpp
-  Character.cpp
-  BaseComponent.cpp
-  Generating Code...
+﻿  PickUp.cpp
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.exe
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.pdb (Partial PDB)
   C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x86\SDL2.dll

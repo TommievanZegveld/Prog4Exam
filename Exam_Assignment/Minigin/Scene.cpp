@@ -8,8 +8,8 @@
 unsigned int Scene::idCounter = 0;
 
 Scene::Scene(const std::string& name) : mName(name) {}
-
 Scene::~Scene() = default;
+
 
 void Scene::Add(const std::shared_ptr<GameObject>& object)
 {
@@ -17,14 +17,27 @@ void Scene::Add(const std::shared_ptr<GameObject>& object)
 	mObjects.push_back(object);
 }
 
-void Scene::Initialize()
+void Scene::Update(float deltaTime)
 {
+	for (auto gameObject : mObjects)
+	{
+		gameObject->Update(deltaTime);
+	}
 }
 
 void Scene::Render() const
 {
 	auto& renderer = Renderer::GetInstance();
 	renderer.Render();
+}
+
+void Scene::FlagForDestruction(std::shared_ptr<GameObject> obj)
+{
+	for (size_t i = 0; i < mObjects.size(); i++)
+	{
+		if (obj == mObjects[i])
+			mToDelete.push_back(mObjects[i]);
+	}
 }
 
 void Scene::DestroyObjects()

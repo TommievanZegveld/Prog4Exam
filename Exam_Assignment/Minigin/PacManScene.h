@@ -15,5 +15,6 @@ public:
 
 private:
 	std::vector<std::shared_ptr<Character>> mActivePlayers;
+	std::vector<std::shared_ptr<GameObject>> mScoreObjects;
 };
 

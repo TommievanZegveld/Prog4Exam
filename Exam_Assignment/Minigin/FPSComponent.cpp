@@ -9,7 +9,7 @@
 
 
 FPSComponent::FPSComponent() : 
-	TextComponent("fps: ", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), color{0,255,0})
+	TextComponent("fps: ", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{0,255,0})
 {	
 }
 

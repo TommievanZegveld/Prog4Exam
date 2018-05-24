@@ -9,6 +9,8 @@ public:
 	Wall(glm::vec2 pos,int width,int height);
 	~Wall();
 
+	void Init() override;
+
 private:
 	int mWidth, mHeight;
 	glm::vec2 mPosition;

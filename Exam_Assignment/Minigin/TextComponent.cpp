@@ -8,7 +8,7 @@
 #include "types.h"
 
 
-TextComponent::TextComponent(const std::string& text, std::shared_ptr<Font> font, color col) :
+TextComponent::TextComponent(const std::string& text, std::shared_ptr<Font> font, Color col) :
 	mNeedsUpdate(true),
 	mText(text),
 	mFont(font),
@@ -41,7 +41,7 @@ void TextComponent::Update(float deltaTime)
 		SDL_FreeSurface(surf);
 		mTexture = std::make_shared<Texture2D>(texture);
 
-		auto mRenderComp = mGameObject->GetComponent<RenderComponent>();
+		auto mRenderComp = mGameObject.lock()->GetComponent<RenderComponent>();
 		if (mRenderComp == nullptr)
 		{
 			std::cout << "Did you try updating a text component with a new text without first adding a rendercomponent?" << std::endl;
@@ -63,7 +63,7 @@ void TextComponent::SetFont(std::shared_ptr<Font> font)
 	mNeedsUpdate = true;
 }
 
-void TextComponent::SetColor(color col)
+void TextComponent::SetColor(Color col)
 {
 	mNeedsUpdate = true;
 	mTextColor = col;

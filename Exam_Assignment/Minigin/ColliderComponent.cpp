@@ -19,7 +19,7 @@ void ColliderComponent::Update(float deltaTime)
 {
 	UNREFERENCED_PARAMETER(deltaTime);
 
-	mPosition = mGameObject->GetTransform()->GetPosition();
+	mPosition = mGameObject.lock()->GetTransform()->GetPosition();
 
 	//std::cout << mPosition.x << ", " << mPosition.y << std::endl;
 }

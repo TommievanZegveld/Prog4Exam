@@ -4,10 +4,11 @@
 class TransformComponent;
 class BaseComponent;
 
-class GameObject
+class GameObject : public std::enable_shared_from_this<GameObject>
 {
 public:
-	void Update(float deltaTime);
+	virtual void Init();
+	virtual void Update(float deltaTime);
 
 	std::shared_ptr<TransformComponent> GetTransform() const { return mTransform; }
 
@@ -16,6 +17,7 @@ public:
 	void AddComponent(std::shared_ptr<BaseComponent> component);
 	template<class T> std::shared_ptr<T> GetComponent();
 
+
 	GameObject();
 	virtual ~GameObject();
 	GameObject(const GameObject& other) = delete;
@@ -23,9 +25,12 @@ public:
 	GameObject& operator=(const GameObject& other) = delete;
 	GameObject& operator=(GameObject&& other) = delete;
 
+protected:
+	friend class Character;
+	std::vector<std::shared_ptr<BaseComponent>> mComponents;
+
 private:
 	std::shared_ptr<TransformComponent> mTransform;
-	std::vector<std::shared_ptr<BaseComponent>> mComponents;
 };
 
 template <class T>

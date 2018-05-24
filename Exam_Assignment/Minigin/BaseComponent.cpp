@@ -5,7 +5,7 @@
 #include <SDL.h>
 
 
-BaseComponent::BaseComponent() : mGameObject(nullptr)
+BaseComponent::BaseComponent()
 {
 }
 
@@ -14,7 +14,7 @@ BaseComponent::~BaseComponent()
 {
 }
 
-GameObject* BaseComponent::GetGameObject() const
+std::weak_ptr<GameObject> BaseComponent::GetGameObject() const
 {
 	return mGameObject;
 }

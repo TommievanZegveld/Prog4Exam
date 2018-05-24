@@ -11,6 +11,7 @@
 #include "Pacman.h"
 #include "Wall.h"
 #include "GameObject.h"
+#include "PickUp.h"
 #include <algorithm>
 
 PacManScene::PacManScene() : Scene("Pacman Scene")
@@ -55,13 +56,13 @@ void PacManScene::Initialize()
 	input.BindKeyboardKey(GameController::KeyBoard2, SDL_SCANCODE_LEFT, leftCommand);
 	input.BindKeyboardKey(GameController::KeyBoard2, SDL_SCANCODE_RIGHT, rightCommand);
 
-	//auto go4 = std::make_shared<GameObject>();
-	//auto fpsComp = std::make_shared<FPSComponent>();
-	//auto rendComp = std::make_shared<RenderComponent>();
-	//go4->AddComponent(rendComp);
-	//go4->AddComponent(fpsComp);
-	//go4->SetPosition(30, 30);
-	//Add(go4);
+	auto go4 = std::make_shared<GameObject>();
+	Add(go4);
+	auto rendComp = std::make_shared<RenderComponent>();
+	go4->AddComponent(rendComp);
+	auto fpsComp = std::make_shared<FPSComponent>();
+	go4->AddComponent(fpsComp);
+	go4->SetPosition(100, 40);
 
 	auto player1 = std::make_shared<Pacman>();
 	Add(player1);
@@ -73,6 +74,10 @@ void PacManScene::Initialize()
 
 	auto wall1 = std::make_shared<Wall>(glm::vec2(300, 300), 200, 20);
 	Add(wall1);
+
+
+	auto pickup1 = std::make_shared<PickUp>(glm::vec2(250, 250));
+	Add(pickup1);
 
 	//auto wall = std::make_shared<GameObject>();
 	//auto rend = std::make_shared<RenderComponent>();
@@ -101,7 +106,7 @@ void PacManScene::Update(float deltaTime)
 	{
 		auto dir = character->GetDirection();
 		auto speed = 100.f * deltaTime;
-		auto offset = speed * 1.0f;
+		auto offset = speed * 10.f;
 
 		switch (dir)
 		{
@@ -143,21 +148,27 @@ void PacManScene::Update(float deltaTime)
 			default:
 				break;
 			}
-			character->SetDirection(Direction::NONE);
 
-			//auto collider = collision.GetCollider();
+			auto collider = collision.GetCollider();
+			auto obj = collider->GetGameObject();
+			auto dynCast = std::dynamic_pointer_cast<Wall>(obj.lock());
 
-			//auto dynCast = std::dynamic_pointer_cast<Wall>(std::make_shared<GameObject>(*collider->GetGameObject()));
+			if(dynCast)
+			{
+				std::cout << "WALL" << std::endl;
+				character->SetDirection(Direction::NONE);
+			}
 
-			//if(dynCast)
-			//{
-			//	for (size_t i = 0; i < mObjects.size(); i++)
-			//	{
-			//		if (colliderObj == mObjects[i])
-			//			mToDelete.push_back(mObjects[i]);
-			//	}
-			//	std::cout << "WALL" << std::endl;
-			//}
+			auto dynCast2 = std::dynamic_pointer_cast<PickUp>(obj.lock());
+			if(dynCast2)
+			{
+				for (size_t i = 0; i < mObjects.size(); i++)
+				{
+					if (obj.lock() == mObjects[i])
+						mToDelete.push_back(mObjects[i]);
+				}
+				std::cout << "PICKUP BABY" << std::endl;
+			}
 		}
 	}
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL_hints.h>
 
-struct color
+struct Color
 {
 	Uint8 r, g, b;
 };

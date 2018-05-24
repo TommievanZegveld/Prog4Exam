@@ -27,7 +27,7 @@ void RenderComponent::Render()
 {
 	if (mTexture != nullptr)
 	{
-		const auto pos = mGameObject->GetTransform()->GetPosition();
+		const auto pos = mGameObject.lock()->GetTransform()->GetPosition();
 
 		Renderer::GetInstance().RenderTexture(*mTexture, pos.x - (GetTextureSize().width * 0.5f), pos.y - (GetTextureSize().height * 0.5f));
 	}

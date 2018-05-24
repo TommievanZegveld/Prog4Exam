@@ -15,6 +15,7 @@ class Character : public GameObject
 public:
 	Character();
 	~Character();
+
 	void SetDirection(Direction dir);
 	Direction GetDirection() const { return mCurrentDir; }
 private:

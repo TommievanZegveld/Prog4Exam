@@ -6,7 +6,7 @@
 #include "Renderer.h"
 
 
-RectangleComponent::RectangleComponent(float width,float height) : mWidth(width),mHeight(height)
+RectangleComponent::RectangleComponent(float width,float height, Color col) : mWidth(width),mHeight(height), mCol(col)
 {
 }
 
@@ -18,7 +18,7 @@ RectangleComponent::~RectangleComponent()
 void RectangleComponent::Update(float deltaTime)
 {
 	UNREFERENCED_PARAMETER(deltaTime);
-	auto pos = mGameObject->GetTransform()->GetPosition();
+	auto pos = mGameObject.lock()->GetTransform()->GetPosition();
 
 	SDL_Rect wall;
 	wall.x = (int)pos.x - int(mWidth * 0.5f);
@@ -28,6 +28,6 @@ void RectangleComponent::Update(float deltaTime)
 
 	auto& renderer = Renderer::GetInstance();
 
-	SDL_SetRenderDrawColor(renderer.GetSDLRenderer(), 0, 0, 255, 255);
+	SDL_SetRenderDrawColor(renderer.GetSDLRenderer(), mCol.r, mCol.g, mCol.b, 255);
 	SDL_RenderFillRect(renderer.GetSDLRenderer(), &wall);
 }

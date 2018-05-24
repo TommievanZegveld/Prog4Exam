@@ -9,6 +9,7 @@ public:
 	PickUp(glm::vec2 pos);
 	~PickUp();
 
+	void Init() override;
 private:
 	glm::vec2 mPosition;
 };

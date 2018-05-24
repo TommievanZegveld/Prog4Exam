@@ -13,6 +13,7 @@ Scene::~Scene() = default;
 
 void Scene::Add(const std::shared_ptr<GameObject>& object)
 {
+	object->Init();
 	mObjects.push_back(object);
 }
 
@@ -34,8 +35,8 @@ void Scene::DestroyObjects()
 		{
 			// Remove Render Component if available from Renderer
 			Renderer::GetInstance().RemoveRenderComponent(mToDelete.at(i));
-			ColliderManager::GetInstance().RemoveCollider(mToDelete.at(i));
 			//	Remove the collider component from the collidermanager 
+			ColliderManager::GetInstance().RemoveCollider(mToDelete.at(i));
 			mObjects.erase(std::remove(mObjects.begin(), mObjects.end(), mToDelete.at(i)));
 		}
 	}

@@ -9,8 +9,7 @@
 
 GameObject::GameObject()
 {
-	mTransform = std::make_shared<TransformComponent>();
-	AddComponent(mTransform);
+	
 }
 
 GameObject::~GameObject()
@@ -18,6 +17,12 @@ GameObject::~GameObject()
 	auto test = 0;
 	std::cout << test << std::endl;
 	
+}
+
+void GameObject::Init()
+{
+	mTransform = std::make_shared<TransformComponent>();
+	AddComponent(mTransform);
 }
 
 void GameObject::Update(float deltaTime)
@@ -35,7 +40,7 @@ void GameObject::SetPosition(float x, float y)
 
 void GameObject::AddComponent(std::shared_ptr<BaseComponent> component)
 {
-	component->mGameObject = this;
+	component->mGameObject = shared_from_this();
 
 	for (auto comp : mComponents)
 	{

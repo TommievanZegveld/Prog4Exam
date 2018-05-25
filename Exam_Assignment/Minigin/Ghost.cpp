@@ -3,6 +3,9 @@
 #include "Components.h"
 #include "ColliderManager.h"
 #include "Wall.h"
+#pragma warning (disable:4244)
+#include <time.h>
+
 
 Ghost::Ghost() : mColliderManager(ColliderManager::GetInstance())
 {
@@ -26,6 +29,7 @@ void Ghost::Init()
 	AddComponent(colComp);
 	//	Pacman runs at 100.f units; so ghosts go a bit faster;
 	SetSpeed(110.f);
+	mNextDir = Direction::LEFT;
 }
 
 void Ghost::Update(float deltaTime)
@@ -54,13 +58,27 @@ void Ghost::Update(float deltaTime)
 	default:
 		break;
 	}
-	
+
 	//CheckCollisionInDirection makes sure we behave correctly when hitting walls
 	if (!CheckCollisionInDirection(mNextDir, deltaTime, 5.f))
+	{
+		//	Not Colliding with mNextDir
 		SetDirection(mNextDir);
+	}
 
 	if (CheckCollisionInDirection(mCurrentDir, deltaTime, 1.f))
+	{
 		SetDirection(Direction::NONE);
+	}
+	srand(time(NULL));
+	std::cout << rand() % 4;
+	mNextDirectionTimer += deltaTime;
+	if(mNextDirectionTimer >= 0.1f && !mPlayerControlled)
+	{	
+		SetNextDirection(Direction(rand() % 4));
+		mNextDirectionTimer = 0.0f;
+	}
+	std::cout << (int)mNextDir << std::endl;
 }
 
 bool Ghost::CheckCollisionInDirection(Direction dir, float deltaTime, float unitTest)

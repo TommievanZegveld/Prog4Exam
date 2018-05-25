@@ -13,6 +13,7 @@ public:
 	void Init() override;
 	void Update(float deltaTime) override;
 	std::vector<glm::vec2> GetSpawnPoints() const { return mSpawnPoints; }
+	void SetPlayerControlled(bool b) { mPlayerControlled = b; }
 
 	bool CheckCollisionInDirection(Direction dir, float deltaTime, float unitTest);
 private:
@@ -24,5 +25,10 @@ private:
 			glm::vec2(35,446),	// Bottom left
 			glm::vec2(412,446)	// Bottom right
 	};
+
+	bool mPlayerControlled = false;
+	//	We intialize our mNextDir; so it's true on intialize
+	bool mNextDirectionChosen = true;
+	float mNextDirectionTimer = 0;
 };
 

@@ -78,32 +78,51 @@ void PacManScene::Initialize()
 	go4->AddComponent(fpsComp);
 	go4->SetPosition(550, 440);
 
-	auto player1 = std::make_shared<Pacman>();
-	Add(player1);
-	player1->SetPosition(player1->GetSpawnPoint().x, player1->GetSpawnPoint().y);
-	mActivePlayers.push_back(player1);
-
+	//	Pacman 1 Object
+	auto pacman1 = std::make_shared<Pacman>();
+	Add(pacman1);
+	pacman1->SetPosition(pacman1->GetSpawnPoint().x, pacman1->GetSpawnPoint().y);
+	//	Score for Pacman 1
 	auto scoreObj = std::make_shared<GameObject>();
 	Add(scoreObj);
 	scoreObj->AddComponent(std::make_shared<RenderComponent>());
 	auto textComp = std::make_shared<TextComponent>("Score: 0", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{ 255, 255, 255 });
 	scoreObj->AddComponent(textComp);
-
 	scoreObj->SetPosition(550, 30);
 	mScoreObjects.push_back(scoreObj);
+	////	Pacman 2 Object
+	//auto pacman2 = std::make_shared<Pacman>();
+	//Add(pacman2);
+	//pacman2->SetPosition(pacman2->GetSpawnPoint().x, pacman2->GetSpawnPoint().y);
+	////	Score for Pacman 2
+	//auto scoreObj2 = std::make_shared<GameObject>();
+	//Add(scoreObj2);
+	//scoreObj2->AddComponent(std::make_shared<RenderComponent>());
+	//auto textComp2 = std::make_shared<TextComponent>("Score: 0", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{ 255, 255, 255 });
+	//scoreObj2->AddComponent(textComp2);
+	//scoreObj2->SetPosition(550, 130);
+	//mScoreObjects.push_back(scoreObj2);
+	//	Ghost 1
+	auto ghost1 = std::make_shared<Ghost>();
+	Add(ghost1);
+	ghost1->SetPosition(ghost1->GetSpawnPoints()[0].x, ghost1->GetSpawnPoints()[0].y);
+	//	Ghost 2
+	auto ghost2 = std::make_shared<Ghost>();
+	Add(ghost2);
+	ghost2->SetPosition(ghost1->GetSpawnPoints()[1].x, ghost1->GetSpawnPoints()[1].y);
+	//	Ghost 3
+	auto ghost3 = std::make_shared<Ghost>();
+	Add(ghost3);
+	ghost3->SetPosition(ghost1->GetSpawnPoints()[2].x, ghost1->GetSpawnPoints()[2].y);
+	//	Ghost 4
+	auto ghost4 = std::make_shared<Ghost>();
+	Add(ghost4);
+	ghost4->SetPosition(ghost1->GetSpawnPoints()[3].x, ghost1->GetSpawnPoints()[3].y);
 
-	auto player2 = std::make_shared<Ghost>();
-	Add(player2);
-	player2->SetPosition(224, 174);
-	mActivePlayers.push_back(player2);
 
-	auto scoreObj2 = std::make_shared<GameObject>();
-	Add(scoreObj2);
-	scoreObj2->AddComponent(std::make_shared<RenderComponent>());
-	auto textComp2 = std::make_shared<TextComponent>("Score: 0", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{ 255, 255, 255 });
-	scoreObj2->AddComponent(textComp2);
-	scoreObj2->SetPosition(550, 130);
-	mScoreObjects.push_back(scoreObj2);
+
+	mActivePlayers.push_back(pacman1);
+	mActivePlayers.push_back(ghost1); ghost1->SetPlayerControlled(true);
 
 	input.SetPlayer(GameController::KeyBoard1, mActivePlayers[0]);
 	input.SetPlayer(GameController::KeyBoard2, mActivePlayers[1]);
@@ -125,9 +144,9 @@ void PacManScene::Update(float deltaTime)
 			for (auto des : toDestroy)
 				FlagForDestruction(des);
 			score = pacManCast->GetScore();
+			auto text = "Score: " + std::to_string(score);
+			mScoreObjects[i]->GetComponent<TextComponent>()->SetText(text);
 		}
-		auto text = "Score: " + std::to_string(score);
-		mScoreObjects[i]->GetComponent<TextComponent>()->SetText(text);
 	}
 
 	DestroyObjects();

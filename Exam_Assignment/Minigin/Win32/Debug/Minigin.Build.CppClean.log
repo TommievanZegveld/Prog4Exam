@@ -2,8 +2,7 @@ c:\develop\prog4exam\exam_assignment\minigin\win32\debug\minigin.pch
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\vc141.pdb
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\vc141.idb
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\miniginpch.obj
-c:\develop\prog4exam\exam_assignment\minigin\win32\debug\gamecommands.obj
-c:\develop\prog4exam\exam_assignment\minigin\win32\debug\gameobject.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\debug\ghost.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\inputmanager.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\levelloader.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\log.obj
@@ -17,6 +16,7 @@ c:\develop\prog4exam\exam_assignment\minigin\win32\debug\renderer.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\resourcemanager.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\scene.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\scenemanager.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\debug\specialpickup.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\textcomponent.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\texture2d.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\texturecomponent.obj
@@ -28,8 +28,8 @@ c:\develop\prog4exam\exam_assignment\minigin\win32\debug\collidercomponent.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\collidermanager.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\font.obj
 c:\develop\prog4exam\exam_assignment\minigin\win32\debug\fpscomponent.obj
-c:\develop\prog4exam\exam_assignment\minigin\win32\debug\ghost.obj
-c:\develop\prog4exam\exam_assignment\minigin\win32\debug\specialpickup.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\debug\gamecommands.obj
+c:\develop\prog4exam\exam_assignment\minigin\win32\debug\gameobject.obj
 c:\develop\prog4exam\exam_assignment\win32\debug\minigin.exe
 c:\develop\prog4exam\exam_assignment\win32\debug\minigin.ilk
 c:\develop\prog4exam\exam_assignment\win32\debug\minigin.pdb

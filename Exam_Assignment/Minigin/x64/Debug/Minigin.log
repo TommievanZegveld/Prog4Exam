@@ -1,15 +1,15 @@
-﻿  Minigin.cpp
-  Minigin.vcxproj -> C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.exe
-  Minigin.vcxproj -> C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.pdb (Partial PDB)
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
+﻿  PacManScene.cpp
+  Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.exe
+  Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\x64\Debug\Minigin.pdb (Partial PDB)
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\zlib1.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\zlib1.dll
   6 File(s) copied
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
-  C:\Users\Tommie\OneDrive - Hogeschool West-Vlaanderen\17-18\DAE\Semester 2\Programming 4\Exam Assignment\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
   2 File(s) copied

@@ -38,10 +38,14 @@ void Pacman::Update(float deltaTime)
 	//	Update all the components first
 	GameObject::Update(deltaTime);
 
+	if (mLives <= 0)
+	{	
+		SetPosition(510, 220);
+		return;
+	}
+
 	auto speed = GetSpeed() * deltaTime;
 	//auto offset = speed * 3.f;
-
-	std::cout << mLives << std::endl;
 
 	if (mSuperState)
 	{
@@ -108,8 +112,6 @@ void Pacman::Update(float deltaTime)
 				mLives -= 1;
 				SetDirection(Direction::NONE);
 				SetNextDirection(Direction::NONE);
-				if (mLives <= 0)
-					mToDestroy.push_back(shared_from_this());
 			}
 		}
 

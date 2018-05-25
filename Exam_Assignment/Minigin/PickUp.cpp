@@ -22,4 +22,5 @@ void PickUp::Init()
 	auto rect = std::make_shared<RectangleComponent>(5.f, 5.f,Color{255,255,0});
 	AddComponent(rect);
 	SetPosition(mPosition.x, mPosition.y);
+	mScoreValue = 1;
 }

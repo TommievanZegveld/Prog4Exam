@@ -4,7 +4,9 @@
 #include "ColliderManager.h"
 #include "Wall.h"
 #include "PickUp.h"
+#include "Ghost.h"
 #include "Scene.h"
+#include "SpecialPickUp.h"
 
 
 Pacman::Pacman() : mColliderManager(ColliderManager::GetInstance())
@@ -39,6 +41,22 @@ void Pacman::Update(float deltaTime)
 	auto speed = GetSpeed() * deltaTime;
 	//auto offset = speed * 3.f;
 
+	std::cout << mLives << std::endl;
+
+	if (mSuperState)
+	{
+		if (mSuperTimer >= mSuperTime)
+		{	
+			mSuperState = false;
+			mSuperTimer = 0.0f;
+			SetSpeed(100.f);
+			return;
+		}
+		
+		mSuperTimer += deltaTime;
+		SetSpeed(150.f);
+	}
+
 	switch (mCurrentDir)
 	{
 	case Direction::UP:
@@ -64,7 +82,7 @@ void Pacman::Update(float deltaTime)
 	if (!CheckCollisionInDirection(mNextDir, deltaTime,5.f))
 		SetDirection(mNextDir);
 
-	if(CheckCollisionInDirection(mCurrentDir,deltaTime,1.f))
+	if(CheckCollisionInDirection(mCurrentDir,deltaTime, 2.f))
 		SetDirection(Direction::NONE);
 
 	if(mColliderManager.CheckCollision(shared_from_this()))
@@ -73,62 +91,42 @@ void Pacman::Update(float deltaTime)
 		auto obj = collider->GetGameObject();
 		//Check for 3 casts;
 		//	Miss Pacman ; Ghosts ; PickUps
-		auto pacCast = std::dynamic_pointer_cast<Pacman>(obj.lock());
-		{}
+		auto ghostCast = std::dynamic_pointer_cast<Ghost>(obj.lock());
+		if(ghostCast)
+		{
+			if(mSuperState)
+			{
+				mScore += 100;
+				auto spawnpoints = ghostCast->GetSpawnPoints();
+				int randIdx = rand() % 4;
+				auto spawnpoint = spawnpoints[randIdx];
+				ghostCast->SetPosition(spawnpoint.x,spawnpoint.y);
+			}
+			else
+			{
+				shared_from_this()->SetPosition(mSpawnPoint.x, mSpawnPoint.y);
+				mLives -= 1;
+				SetDirection(Direction::NONE);
+				SetNextDirection(Direction::NONE);
+				if (mLives <= 0)
+					mToDestroy.push_back(shared_from_this());
+			}
+		}
 
 		auto pickCast = std::dynamic_pointer_cast<PickUp>(obj.lock());
 		if (pickCast)
 		{
 			//	Pickup;
 			mToDestroy.push_back(obj.lock());
-			mScore++;
+			mScore += pickCast->GetScore();
+			if (std::dynamic_pointer_cast<SpecialPickUp>(pickCast))
+			{
+				mSuperState = true;
+				// Reset timer when a new super pickup has been picked up
+				mSuperTimer = 0.0f;
+			}
 		}
 	}
-
-
-	//if(mColliderManager.CheckCollision(shared_from_this()))
-	//{
-	//	auto collider = mColliderManager.GetCollider();
-	//	auto obj = collider->GetGameObject();
-	//	//	Check for 3 casts; Ghost/Pickup/Wall
-	//	//	Wall
-	//	auto wallCast = std::dynamic_pointer_cast<Wall>(obj.lock());
-	//	if(wallCast)
-	//	{
-	//		//	Bumped into wall; do logic
-	//		switch (mCurrentDir)
-	//		{
-	//		case Direction::UP:
-	//			GetTransform()->Move(0, speed + offset);
-	//			break;
-	//		case Direction::LEFT:
-	//			GetTransform()->Move(speed + offset, 0);;
-	//			break;
-	//		case Direction::RIGHT:
-	//			GetTransform()->Move(-(speed + offset), 0);
-	//			break;
-	//		case Direction::DOWN:
-	//			GetTransform()->Move(0, -(speed + offset));
-	//			break;
-	//		case Direction::NONE:
-	//			GetTransform()->Move(0, 0);
-	//			break;
-	//		default:
-	//			break;
-	//		}
-	//		SetDirection(Direction::NONE);
-
-	//	}
-
-	//	//	PickUp
-	//	auto pickCast = std::dynamic_pointer_cast<PickUp>(obj.lock());
-	//	if(pickCast)
-	//	{
-	//		//	Pickup;
-	//		mToDestroy.push_back(obj.lock());
-	//		mScore++;
-	//	}
-	//}
 }
 
 bool Pacman::CheckCollisionInDirection(Direction dir,float deltaTime, float unitTest)

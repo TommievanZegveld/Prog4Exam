@@ -5,6 +5,7 @@
 #include "parser.hpp"
 #include "Wall.h"
 #include "PickUp.h"
+#include "SpecialPickUp.h"
 
 
 LevelLoader::LevelLoader(std::string filename)
@@ -27,6 +28,11 @@ LevelLoader::LevelLoader(std::string filename)
 		{
 			auto pickup = std::make_shared<PickUp>(glm::vec2(std::stoi(row[1]), std::stoi(row[2])));
 			mPickUps.push_back(pickup);
+		}
+		if(row[0] == "special")
+		{
+			auto pickup = std::make_shared<SpecialPickUp>(glm::vec2(std::stoi(row[1]), std::stoi(row[2])));
+			mSpecials.push_back(pickup);
 		}
 	}
 }

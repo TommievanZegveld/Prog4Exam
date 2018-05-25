@@ -9,9 +9,11 @@
 #include "ColliderManager.h"
 
 #include "Pacman.h"
+#include "Ghost.h"
 #include "Wall.h"
 #include "GameObject.h"
 #include "PickUp.h"
+#include "SpecialPickUp.h"
 #include <algorithm>
 #include "LevelLoader.h"
 
@@ -64,6 +66,9 @@ void PacManScene::Initialize()
 	auto pickups = level->GetPickUps();
 	for (auto pick : pickups)
 		Add(pick);
+	auto specials = level->GetSpecials();
+	for (auto spec : specials)
+		Add(spec);
 
 	auto go4 = std::make_shared<GameObject>();
 	Add(go4);
@@ -75,7 +80,7 @@ void PacManScene::Initialize()
 
 	auto player1 = std::make_shared<Pacman>();
 	Add(player1);
-	player1->SetPosition(224, 266);
+	player1->SetPosition(player1->GetSpawnPoint().x, player1->GetSpawnPoint().y);
 	mActivePlayers.push_back(player1);
 
 	auto scoreObj = std::make_shared<GameObject>();
@@ -87,7 +92,7 @@ void PacManScene::Initialize()
 	scoreObj->SetPosition(550, 30);
 	mScoreObjects.push_back(scoreObj);
 
-	auto player2 = std::make_shared<Pacman>();
+	auto player2 = std::make_shared<Ghost>();
 	Add(player2);
 	player2->SetPosition(224, 174);
 	mActivePlayers.push_back(player2);

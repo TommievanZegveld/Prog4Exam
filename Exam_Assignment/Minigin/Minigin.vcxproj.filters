@@ -144,6 +144,12 @@
     <ClInclude Include="LevelLoader.h">
       <Filter>Game Files\LevelLoader</Filter>
     </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Game Files\Game Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialPickUp.h">
+      <Filter>Game Files\Game Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
@@ -226,6 +232,12 @@
     </ClCompile>
     <ClCompile Include="LevelLoader.cpp">
       <Filter>Game Files\LevelLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Game Files\Game Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialPickUp.cpp">
+      <Filter>Game Files\Game Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

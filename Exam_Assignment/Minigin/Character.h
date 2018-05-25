@@ -22,6 +22,9 @@ public:
 
 	void SetSpeed(float speed) {mSpeed = speed; }
 	float GetSpeed() { return mSpeed; }
+
+	bool CheckCollisionInDirection(Direction dir, float deltaTime, float unitTest);
+
 protected:
 	Direction mCurrentDir;
 	Direction mNextDir;

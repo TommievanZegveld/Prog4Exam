@@ -46,6 +46,9 @@
     <Filter Include="Game Files\LevelLoader">
       <UniqueIdentifier>{225d54dd-e9f9-489b-9077-be348f7cd0bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Files\Global Files">
+      <UniqueIdentifier>{070d7e30-ca10-4737-8640-30a85a60543d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h">
@@ -152,6 +155,12 @@
     </ClInclude>
     <ClInclude Include="SelectionScene.h">
       <Filter>Game Files\SceneFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Game Files\Global Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTypes.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

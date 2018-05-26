@@ -36,6 +36,10 @@ public:
 	void BindKeyboardKey(GameController player, SDL_Scancode key, std::shared_ptr<Command> command);
 	
 	void SetPlayer(GameController id, std::weak_ptr<GameObject> gameObj) {mGameObjects[(int)id] = gameObj; }
+
+	bool IsDown(SDL_Scancode key);
+	bool IsReleased(SDL_Scancode key);
+	bool IsPressed(SDL_Scancode key);
 	
 	//void SetPlayer1(std::weak_ptr<GameObject> gameObj) { mPlayer1GameObj = gameObj; }
 	//void SetPlayer2(std::weak_ptr<GameObject> gameObj) { mPlayer2GameObj = gameObj; }
@@ -48,6 +52,8 @@ private:
 
 	//std::weak_ptr<GameObject> mPlayer1GameObj;
 	//std::weak_ptr<GameObject> mPlayer2GameObj;
+
+	bool mPressed[SDL_NUM_SCANCODES] = { false };
 
 	std::weak_ptr<GameObject> mGameObjects[int(GameController::ControllerLimit)];
 };

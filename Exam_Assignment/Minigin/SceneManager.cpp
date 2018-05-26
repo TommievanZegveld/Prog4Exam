@@ -44,11 +44,12 @@ void SceneManager::PreviousScene()
 {
 	for (size_t i = 0; i < mScenes.size(); i++)
 	{
-		if (mScenes[i] = mActiveScene)
+		if (mScenes[i] == mActiveScene)
 		{
 			if (i == 0) i = mScenes.size();
 			auto prevScene = (--i) % mScenes.size();
 			mNewActiveScene = mScenes[prevScene];
+			break;
 		}
 	}
 }

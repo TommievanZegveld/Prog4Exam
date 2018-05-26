@@ -12,9 +12,9 @@ LevelLoader::LevelLoader(std::string filename)
 {
 	std::ifstream myFile;
 	myFile.open("../Data/" + filename);
-	if (myFile.is_open())
+	if (!myFile.is_open())
 	{
-		std::cout << "OPEN" << std::endl;
+		std::cout << "Could not open " << filename << std::endl;
 	}
 	aria::csv::CsvParser parser(myFile);
 	for (auto& row : parser)

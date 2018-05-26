@@ -46,14 +46,14 @@ void RightCommand::execute(std::weak_ptr<GameObject>& gameObj)
 void NextCommand::execute(std::weak_ptr<GameObject>& gameObj)
 {
 	UNREFERENCED_PARAMETER(gameObj);
-	auto& sceneManager = ::SceneManager::GetInstance();
+	auto& sceneManager = SceneManager::GetInstance();
 	sceneManager.NextScene();
 }
 
 void PreviousCommand::execute(std::weak_ptr<GameObject>& gameObj)
 {
 	UNREFERENCED_PARAMETER(gameObj);
-	auto& sceneManager = ::SceneManager::GetInstance();
+	auto& sceneManager = SceneManager::GetInstance();
 	sceneManager.PreviousScene();
 }
 

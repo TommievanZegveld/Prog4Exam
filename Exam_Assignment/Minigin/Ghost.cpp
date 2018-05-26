@@ -29,7 +29,7 @@ void Ghost::Init()
 	AddComponent(colComp);
 	//	Pacman runs at 100.f units; so ghosts go a bit faster;
 	SetSpeed(110.f);
-	mNextDir = Direction::LEFT;
+	mNextDir = Direction::NONE;
 }
 
 void Ghost::Update(float deltaTime)
@@ -66,19 +66,17 @@ void Ghost::Update(float deltaTime)
 		SetDirection(mNextDir);
 	}
 
-	if (CheckCollisionInDirection(mCurrentDir, deltaTime, 1.f))
+	if (CheckCollisionInDirection(mCurrentDir, deltaTime, 2.f))
 	{
 		SetDirection(Direction::NONE);
 	}
 	srand(time(NULL));
-	std::cout << rand() % 4;
 	mNextDirectionTimer += deltaTime;
 	if(mNextDirectionTimer >= 0.1f && !mPlayerControlled)
 	{	
 		SetNextDirection(Direction(rand() % 4));
 		mNextDirectionTimer = 0.0f;
 	}
-	std::cout << (int)mNextDir << std::endl;
 }
 
 bool Ghost::CheckCollisionInDirection(Direction dir, float deltaTime, float unitTest)

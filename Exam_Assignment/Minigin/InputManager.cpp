@@ -56,28 +56,33 @@ bool InputManager::ProcessInput()
 	}
 
 	const Uint8 *state = SDL_GetKeyboardState(NULL);
-	
+
 	//	GetKeyBoardState returns an array of integers; 0 for released; 1 for down;
 	//	SDL_NUM_SCANCODES is defined in SDL_scancode.h
 	for (int i = 0; i < SDL_NUM_SCANCODES; i++)
 	{
-		//	If a button is pressed
+		//	If a button is down
 		if(state[i])
 		{
-			if (i == 48)
-				std::cout << "found" << std::endl;
 			//	var is a pair of <GameController,Command>
 			auto var = mKeyMapping[SDL_Scancode(i)];
 			//	var.first contains a GameController; by casting it to an int we can check wether a gameObject exists
 			//	var.second contains a Command and we need to make sure this Command exists;
 			//	So first w check wether gameobject exists and then check if there's a command linked to the mapped key;
-			if(mGameObjects[int(var.first)].lock() && var.second)
+			if(mGameObjects[int(var.first)].lock() && var.second && IsPressed(SDL_Scancode(i)))
 			{
 				//	Execute the command on the gameObject associated with the GameController
 				var.second->execute(mGameObjects[int(var.first)]);
 			}
 		}
 	}
+
+	for (size_t i = 0; i < SDL_NUM_SCANCODES; i++)
+	{
+		if (!state[i] && mPressed[i])
+			mPressed[i] = false;
+	}
+
 
 	return true;
 }
@@ -94,6 +99,43 @@ void InputManager::BindKeyboardKey(GameController player, SDL_Scancode key, std:
 	//	In that case change the command
 	if (!mKeyMapping.insert(std::make_pair(key, std::make_pair(player, command))).second)
 		mKeyMapping[key] = std::make_pair(player, command);
+}
+
+bool InputManager::IsDown(SDL_Scancode key)
+{
+	const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+	if (state[key])
+		return true;
+
+	return false;
+}
+
+bool InputManager::IsReleased(SDL_Scancode key)
+{
+
+
+	const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+	if (mPressed[key])
+		if (!state[key])
+		{
+			mPressed[key] = false;
+			return true;
+		}
+	return false;
+}
+
+bool InputManager::IsPressed(SDL_Scancode key)
+{
+	if(!IsReleased(key)) // Resetting to released for every pressed function call if necessary
+		if(!mPressed[key])
+			if (IsDown(key))
+			{
+				mPressed[key] = true;
+				return true;
+			}
+	return false;
 }
 
 

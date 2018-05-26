@@ -14,9 +14,6 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	auto test = 0;
-	std::cout << test << std::endl;
-	
 }
 
 void GameObject::Init()

@@ -23,7 +23,8 @@ enum class GameController
 	Controller4 = 3,
 	KeyBoard1 = 4,
 	KeyBoard2 = 5,
-	ControllerLimit = 6
+	GlobalCommands = 6,
+	ControllerLimit = 7
 };
 
 class InputManager final : public Singleton<InputManager>

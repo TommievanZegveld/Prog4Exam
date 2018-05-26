@@ -16,6 +16,9 @@ public:
 	void FlagForDestruction(std::shared_ptr<GameObject> obj);
 	void DestroyObjects();
 
+	void DestroyScene();
+	virtual void DestroyLocals();
+
 	~Scene();
 	Scene(const Scene& other) = delete;
 	Scene(Scene&& other) = delete;

@@ -150,6 +150,9 @@
     <ClInclude Include="SpecialPickUp.h">
       <Filter>Game Files\Game Items</Filter>
     </ClInclude>
+    <ClInclude Include="SelectionScene.h">
+      <Filter>Game Files\SceneFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
@@ -238,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="SpecialPickUp.cpp">
       <Filter>Game Files\Game Items</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionScene.cpp">
+      <Filter>Game Files\SceneFiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

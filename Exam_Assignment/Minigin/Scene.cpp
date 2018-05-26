@@ -55,3 +55,26 @@ void Scene::DestroyObjects()
 	}
 }
 
+void Scene::DestroyScene()
+{
+	// Objects already flagged for destruction should be destroyed first
+	DestroyObjects();
+	//	Local vectors should be cleared aswell; in case there is only 1 scene the shared pointer
+	//	Never goes out of scope so if within the intialize we add to these local vectors
+	//	the vector continues growing; which is undesirable;
+	DestroyLocals();
+
+	for (size_t i = 0; i < mObjects.size(); i++)
+	{
+		// Remove Render Component if available from Renderer
+		Renderer::GetInstance().RemoveRenderComponent(mObjects.at(i));
+		//	Remove the collider component from the collidermanager 
+		ColliderManager::GetInstance().RemoveCollider(mObjects.at(i));
+	}
+	mObjects.clear();
+}
+
+void Scene::DestroyLocals()
+{
+}
+

@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include "GameCommands.h"
 #include "Character.h"
+#include "SceneManager.h"
 
 void UpCommand::execute(std::weak_ptr<GameObject>& gameObj)
 {
@@ -41,3 +42,19 @@ void RightCommand::execute(std::weak_ptr<GameObject>& gameObj)
 		//std::cout << "Right command pressed" << std::endl;
 	}
 }
+
+void NextCommand::execute(std::weak_ptr<GameObject>& gameObj)
+{
+	UNREFERENCED_PARAMETER(gameObj);
+	auto& sceneManager = ::SceneManager::GetInstance();
+	sceneManager.NextScene();
+}
+
+void PreviousCommand::execute(std::weak_ptr<GameObject>& gameObj)
+{
+	UNREFERENCED_PARAMETER(gameObj);
+	auto& sceneManager = ::SceneManager::GetInstance();
+	sceneManager.PreviousScene();
+}
+
+

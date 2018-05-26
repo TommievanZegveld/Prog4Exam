@@ -93,8 +93,8 @@ void Pacman::Update(float deltaTime)
 	{
 		auto collider = mColliderManager.GetCollider();
 		auto obj = collider->GetGameObject();
-		//Check for 3 casts;
-		//	Miss Pacman ; Ghosts ; PickUps
+		//Check for 2 casts;
+		//	Ghosts ; PickUps
 		auto ghostCast = std::dynamic_pointer_cast<Ghost>(obj.lock());
 		if(ghostCast)
 		{
@@ -108,7 +108,7 @@ void Pacman::Update(float deltaTime)
 			}
 			else
 			{
-				shared_from_this()->SetPosition(mSpawnPoint.x, mSpawnPoint.y);
+				SetPosition(mSpawnPoint.x, mSpawnPoint.y);
 				mLives -= 1;
 				SetDirection(Direction::NONE);
 				SetNextDirection(Direction::NONE);

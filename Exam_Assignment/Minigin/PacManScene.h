@@ -12,6 +12,7 @@ public:
 	void Update(float deltaTime) override;
 
 	void Initialize() override;
+	void DestroyLocals() override;
 
 private:
 	std::vector<std::shared_ptr<Character>> mActivePlayers;

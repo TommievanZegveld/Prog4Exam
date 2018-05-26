@@ -48,7 +48,6 @@ bool InputManager::ProcessInput()
 	}
 
 	//	If I Don't poll the events the window gets stuck and no input can be read;
-	//	For now I just allow this thing to exist in it's tiny tiny time frame;
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) {
@@ -65,6 +64,8 @@ bool InputManager::ProcessInput()
 		//	If a button is pressed
 		if(state[i])
 		{
+			if (i == 48)
+				std::cout << "found" << std::endl;
 			//	var is a pair of <GameController,Command>
 			auto var = mKeyMapping[SDL_Scancode(i)];
 			//	var.first contains a GameController; by casting it to an int we can check wether a gameObject exists

@@ -128,6 +128,12 @@ void PacManScene::Initialize()
 	input.SetPlayer(GameController::KeyBoard2, mActivePlayers[1]);
 }
 
+void PacManScene::DestroyLocals()
+{
+	mActivePlayers.clear();
+	mScoreObjects.clear();
+}
+
 void PacManScene::Update(float deltaTime)
 {
 	Scene::Update(deltaTime);

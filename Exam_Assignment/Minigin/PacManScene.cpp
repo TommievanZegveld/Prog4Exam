@@ -18,6 +18,7 @@
 #include "LevelLoader.h"
 #include "GameTypes.h"
 #include "GameSettings.h"
+#include "Teleporter.h"
 
 PacManScene::PacManScene() : Scene("Pacman Scene")
 {
@@ -73,6 +74,13 @@ void PacManScene::Initialize()
 	auto specials = level->GetSpecials();
 	for (auto spec : specials)
 		Add(spec);
+	auto portals = level->GetPortals();
+	for (auto portal : portals)
+	{
+		Add(portal);
+		Add(portal->mPortal1);
+		Add(portal->mPortal2);
+	}
 
 	//	FPS-Counter
 	auto go4 = std::make_shared<GameObject>();

@@ -77,7 +77,7 @@ void Ghost::Update(float deltaTime)
 	auto seed = std::chrono::duration_cast<std::chrono::microseconds>(now1 - then1);
 	srand(seed.count());
 	mNextDirectionTimer += deltaTime;
-	if(mNextDirectionTimer >= 1.f && !mPlayerControlled)
+	if(mNextDirectionTimer >= 0.75f && !mPlayerControlled)
 	{	
 		SetNextDirection(Direction(rand() % 4));
 		mNextDirectionTimer = 0.0f;

@@ -31,6 +31,8 @@ void Pacman::Init()
 	textComp->SetTexture("pacman.png");
 	auto colComp = std::make_shared<ColliderComponent>(GetTransform()->GetPosition(), (float)rend->GetTextureSize().width, (float)rend->GetTextureSize().height, ColliderType::DYNAMIC);
 	AddComponent(colComp);
+
+	mNextDir = Direction::NONE;
 }
 
 void Pacman::Update(float deltaTime)

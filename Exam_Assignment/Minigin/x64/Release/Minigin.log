@@ -1,0 +1,51 @@
+﻿  MiniginPCH.cpp
+  BaseComponent.cpp
+  Character.cpp
+  ColliderComponent.cpp
+  ColliderManager.cpp
+  Font.cpp
+  FPSComponent.cpp
+  Fruit.cpp
+  GameCommands.cpp
+  GameObject.cpp
+  Ghost.cpp
+  InputManager.cpp
+  LevelLoader.cpp
+  Log.cpp
+  Minigin.cpp
+  Pacman.cpp
+  PacManScene.cpp
+  PickUp.cpp
+  RectangleComponent.cpp
+  RenderComponent.cpp
+  Renderer.cpp
+  Compiling...
+  ResourceManager.cpp
+  Scene.cpp
+  SceneManager.cpp
+  SelectionScene.cpp
+  SpecialPickUp.cpp
+  Teleporter.cpp
+  TextComponent.cpp
+  Texture2D.cpp
+  TextureComponent.cpp
+  TransformComponent.cpp
+  Wall.cpp
+     Creating library C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.lib and object C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.exp
+  Generating code
+  All 2595 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.exe
+  Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.pdb (Full PDB)
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
+  1 File(s) copied
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_image\lib\x64\zlib1.dll
+  6 File(s) copied
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
+  C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
+  2 File(s) copied

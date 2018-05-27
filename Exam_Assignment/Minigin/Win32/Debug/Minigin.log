@@ -1,36 +1,4 @@
-﻿  MiniginPCH.cpp
-  Wall.cpp
-  TransformComponent.cpp
-  TextureComponent.cpp
-  Texture2D.cpp
-  TextComponent.cpp
-  SpecialPickUp.cpp
-  SceneManager.cpp
-  Scene.cpp
-  ResourceManager.cpp
-  Renderer.cpp
-  RenderComponent.cpp
-  RectangleComponent.cpp
-  PickUp.cpp
-  PacManScene.cpp
-  Pacman.cpp
-  Minigin.cpp
-  Log.cpp
-  LevelLoader.cpp
-  InputManager.cpp
-  Ghost.cpp
-  Generating Code...
-  Compiling...
-  GameObject.cpp
-  GameCommands.cpp
-  FPSComponent.cpp
-  Font.cpp
-  ColliderManager.cpp
-  ColliderComponent.cpp
-  Character.cpp
-  BaseComponent.cpp
-  Generating Code...
-     Creating library C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.lib and object C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.exp
+﻿  Fruit.cpp
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.exe
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Debug\Minigin.pdb (Partial PDB)
   C:\Develop\Prog4Exam\Exam_Assignment\3rdParty\SDL2\lib\x86\SDL2.dll

@@ -5,6 +5,7 @@
 #include "Wall.h"
 #pragma warning (disable:4244)
 #include <time.h>
+#include <chrono>
 
 
 Ghost::Ghost() : mColliderManager(ColliderManager::GetInstance())
@@ -59,6 +60,8 @@ void Ghost::Update(float deltaTime)
 		break;
 	}
 
+	auto then1 = std::chrono::high_resolution_clock::now();
+
 	//CheckCollisionInDirection makes sure we behave correctly when hitting walls
 	if (!CheckCollisionInDirection(mNextDir, deltaTime, 5.f))
 	{
@@ -70,9 +73,11 @@ void Ghost::Update(float deltaTime)
 	{
 		SetDirection(Direction::NONE);
 	}
-	srand(time(NULL));
+	auto now1 = std::chrono::high_resolution_clock::now();
+	auto seed = std::chrono::duration_cast<std::chrono::microseconds>(now1 - then1);
+	srand(seed.count());
 	mNextDirectionTimer += deltaTime;
-	if(mNextDirectionTimer >= 0.1f && !mPlayerControlled)
+	if(mNextDirectionTimer >= 1.f && !mPlayerControlled)
 	{	
 		SetNextDirection(Direction(rand() % 4));
 		mNextDirectionTimer = 0.0f;

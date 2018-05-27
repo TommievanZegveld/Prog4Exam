@@ -165,6 +165,7 @@
     <ClInclude Include="Teleporter.h">
       <Filter>Game Files\Game Items</Filter>
     </ClInclude>
+    <ClInclude Include="Fruit.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
@@ -260,5 +261,6 @@
     <ClCompile Include="Teleporter.cpp">
       <Filter>Game Files\Game Items</Filter>
     </ClCompile>
+    <ClCompile Include="Fruit.cpp" />
   </ItemGroup>
 </Project>

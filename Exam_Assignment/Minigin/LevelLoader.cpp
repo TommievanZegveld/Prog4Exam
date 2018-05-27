@@ -8,6 +8,7 @@
 #include "SpecialPickUp.h"
 #include "Teleporter.h"
 #include "Character.h"
+#include "Fruit.h"
 
 LevelLoader::LevelLoader(std::string filename)
 {
@@ -48,6 +49,11 @@ LevelLoader::LevelLoader(std::string filename)
 				dir1,
 				glm::vec2(std::stoi(row[4]), std::stoi(row[5])));
 			mPortals.push_back(portal);
+		}
+		if(row[0] == "fruit")
+		{
+			auto fruit = std::make_shared<Fruit>(glm::vec2(std::stoi(row[1]), std::stoi(row[2])));
+			mFruits.push_back(fruit);
 		}
 	}
 }

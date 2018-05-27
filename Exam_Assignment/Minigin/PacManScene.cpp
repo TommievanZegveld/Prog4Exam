@@ -19,6 +19,7 @@
 #include "GameTypes.h"
 #include "GameSettings.h"
 #include "Teleporter.h"
+#include "Fruit.h"
 
 PacManScene::PacManScene() : Scene("Pacman Scene")
 {
@@ -77,6 +78,9 @@ void PacManScene::Initialize()
 	auto portals = level->GetPortals();
 	for (auto portal : portals)
 		Add(portal);
+	auto fruits = level->GetFruit();
+	for (auto fruit : fruits)
+		Add(fruit);
 
 	//	FPS-Counter
 	auto go4 = std::make_shared<GameObject>();
@@ -141,7 +145,7 @@ void PacManScene::Initialize()
 		}
 	}
 
-	for (size_t i = mGhostCounter; i < mMaxGhosts; i++)
+	for (int i = mGhostCounter; i < mMaxGhosts; i++)
 	{
 		auto ghost = std::make_shared<Ghost>();
 		Add(ghost);

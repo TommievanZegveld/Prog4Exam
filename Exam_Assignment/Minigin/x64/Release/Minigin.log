@@ -33,7 +33,7 @@
   Wall.cpp
      Creating library C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.lib and object C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.exp
   Generating code
-  All 2595 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 2618 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.exe
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\x64\Release\Minigin.pdb (Full PDB)

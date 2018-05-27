@@ -1,9 +1,39 @@
-﻿  Ghost.cpp
+﻿  MiniginPCH.cpp
+  BaseComponent.cpp
+  Character.cpp
+  ColliderComponent.cpp
+  ColliderManager.cpp
+  Font.cpp
+  FPSComponent.cpp
+  Fruit.cpp
+  GameCommands.cpp
+  GameObject.cpp
+  Ghost.cpp
+  InputManager.cpp
+  LevelLoader.cpp
+  Log.cpp
+  Minigin.cpp
+  Pacman.cpp
+  PacManScene.cpp
+  PickUp.cpp
+  RectangleComponent.cpp
+  RenderComponent.cpp
+  Renderer.cpp
+  Compiling...
+  ResourceManager.cpp
+  Scene.cpp
+  SceneManager.cpp
+  SelectionScene.cpp
+  SpecialPickUp.cpp
+  Teleporter.cpp
+  TextComponent.cpp
+  Texture2D.cpp
+  TextureComponent.cpp
+  TransformComponent.cpp
+  Wall.cpp
      Creating library C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.lib and object C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.exp
   Generating code
-  1 of 2617 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+  All 2617 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.exe
   Minigin.vcxproj -> C:\Develop\Prog4Exam\Exam_Assignment\Win32\Release\Minigin.pdb (Full PDB)

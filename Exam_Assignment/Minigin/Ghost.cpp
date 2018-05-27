@@ -69,7 +69,7 @@ void Ghost::Update(float deltaTime)
 		SetDirection(mNextDir);
 	}
 
-	if (CheckCollisionInDirection(mCurrentDir, deltaTime, 2.f))
+	if (CheckCollisionInDirection(mCurrentDir, deltaTime, 2.5f))
 	{
 		SetDirection(Direction::NONE);
 	}

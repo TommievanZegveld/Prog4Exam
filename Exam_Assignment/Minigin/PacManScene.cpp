@@ -42,10 +42,10 @@ void PacManScene::Initialize()
 
 	//	Bindings
 	//	Controllers
-	input.BindControllerKey(GameController::Controller1, ControllerButton::ButtonY, upCommand);
-	input.BindControllerKey(GameController::Controller1, ControllerButton::ButtonA, downCommand);
-	input.BindControllerKey(GameController::Controller1, ControllerButton::ButtonX, leftCommand);
-	input.BindControllerKey(GameController::Controller1, ControllerButton::ButtonB, rightCommand);
+	input.BindControllerKey(GameController::Controller1, ControllerButton::Up, upCommand);
+	input.BindControllerKey(GameController::Controller1, ControllerButton::Down, downCommand);
+	input.BindControllerKey(GameController::Controller1, ControllerButton::Left, leftCommand);
+	input.BindControllerKey(GameController::Controller1, ControllerButton::Right, rightCommand);
 
 	input.BindControllerKey(GameController::Controller2, ControllerButton::ButtonY, upCommand);
 	input.BindControllerKey(GameController::Controller2, ControllerButton::ButtonA, downCommand);
@@ -76,11 +76,7 @@ void PacManScene::Initialize()
 		Add(spec);
 	auto portals = level->GetPortals();
 	for (auto portal : portals)
-	{
 		Add(portal);
-		Add(portal->mPortal1);
-		Add(portal->mPortal2);
-	}
 
 	//	FPS-Counter
 	auto go4 = std::make_shared<GameObject>();
@@ -122,13 +118,13 @@ void PacManScene::Initialize()
 			Add(pacman);
 			pacman->SetPosition(pacman->GetSpawnPoint().x, pacman->GetSpawnPoint().y);
 			mActivePlayers.push_back(pacman);
-			auto scoreObj = std::make_shared<GameObject>();
-			Add(scoreObj);
-			scoreObj->AddComponent(std::make_shared<RenderComponent>());
+			auto displayObj = std::make_shared<GameObject>();
+			Add(displayObj);
+			displayObj->AddComponent(std::make_shared<RenderComponent>());
 			auto textComp = std::make_shared<TextComponent>("Score: 0", ResourceManager::GetInstance().LoadFont("Lingua.otf", 36), Color{ 255, 255, 255 });
-			scoreObj->AddComponent(textComp);
-			scoreObj->SetPosition(550, 30 + (mPacmanCounter*100.f));
-			mScoreObjects.push_back(scoreObj);
+			displayObj->AddComponent(textComp);
+			displayObj->SetPosition(700, 66 + (mPacmanCounter*100.f));
+			mDisplayObjects.push_back(displayObj);
 
 			if(setting.controller == Controller::KEYBOARD && mKeyBoardCounter < mMaxKeyboard)
 			{
@@ -205,7 +201,7 @@ void PacManScene::Initialize()
 void PacManScene::DestroyLocals()
 {
 	mActivePlayers.clear();
-	mScoreObjects.clear();
+	mDisplayObjects.clear();
 	mKeyBoardCounter = 0;
 	mControllerCounter = 0;
 	mPlayerCounter = 0;
@@ -219,10 +215,11 @@ void PacManScene::Update(float deltaTime)
 
 	// Ask Pacman object what collided objects to destroy;
 	//	If it hits a pickup for example; it flags it in it's update for destruction
-	auto scoreIt = 0;
+	auto pacmanIt = 0;
 	for (size_t i = 0; i < mActivePlayers.size(); i++)
 	{
 		auto score = 0;
+		auto lives = 0;
 		auto pacManCast = std::dynamic_pointer_cast<Pacman>(mActivePlayers[i]);
 		if (pacManCast)
 		{
@@ -230,9 +227,10 @@ void PacManScene::Update(float deltaTime)
 			for (auto des : toDestroy)
 				FlagForDestruction(des);
 			score = pacManCast->GetScore();
-			auto text = "Score: " + std::to_string(score);
-			mScoreObjects[scoreIt]->GetComponent<TextComponent>()->SetText(text);
-			scoreIt++;
+			lives = pacManCast->GetLives();
+			auto text = "Score: " + std::to_string(score) + "\n" + "Lives: " + std::to_string(lives);
+			mDisplayObjects[pacmanIt]->GetComponent<TextComponent>()->SetText(text);
+			pacmanIt++;
 		}
 	}
 

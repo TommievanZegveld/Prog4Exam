@@ -16,7 +16,7 @@ public:
 
 private:
 	std::vector<std::shared_ptr<Character>> mActivePlayers;
-	std::vector<std::shared_ptr<GameObject>> mScoreObjects;
+	std::vector<std::shared_ptr<GameObject>> mDisplayObjects;
 
 	const int mMaxGhosts = 4;
 	const int mMaxPacman = 2;

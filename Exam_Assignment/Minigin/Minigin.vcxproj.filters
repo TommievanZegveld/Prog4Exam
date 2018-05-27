@@ -162,7 +162,9 @@
     <ClInclude Include="GameTypes.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="Teleporter.h" />
+    <ClInclude Include="Teleporter.h">
+      <Filter>Game Files\Game Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp">
@@ -255,6 +257,8 @@
     <ClCompile Include="SelectionScene.cpp">
       <Filter>Game Files\SceneFiles</Filter>
     </ClCompile>
-    <ClCompile Include="Teleporter.cpp" />
+    <ClCompile Include="Teleporter.cpp">
+      <Filter>Game Files\Game Items</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

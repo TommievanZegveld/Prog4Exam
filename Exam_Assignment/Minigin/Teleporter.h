@@ -9,16 +9,14 @@ class ColliderManager;
 class Teleporter final : public GameObject
 {
 public:
-	Teleporter(glm::vec2 pos1, Direction dir,glm::vec2 pos2, Direction dir2);
+	Teleporter(glm::vec2 pos1, Direction dir,glm::vec2 pos2);
 	~Teleporter();
 
 	void Init() override;
 	void Update(float deltaTime) override;
-
-	std::shared_ptr<GameObject> mPortal1, mPortal2;
 private:
-	glm::vec2 mPosition1, mPosition2;
-	Direction mDirection1, mDirection2;
+	glm::vec2 mPosition, mToPosition;
+	Direction mAllowDirection;
 
 	ColliderManager& mColliderManager;
 };

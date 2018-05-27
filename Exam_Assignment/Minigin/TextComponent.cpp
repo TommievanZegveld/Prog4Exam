@@ -28,7 +28,7 @@ void TextComponent::Update(float deltaTime)
 	if (mNeedsUpdate)
 	{
 		const SDL_Color color = { mTextColor.r,mTextColor.g,mTextColor.b };
-		const auto surf = TTF_RenderText_Blended(mFont->GetFont(), mText.c_str(), color);
+		const auto surf = TTF_RenderText_Blended_Wrapped(mFont->GetFont(), mText.c_str(), color,480);
 		if (surf == nullptr) {
 			std::stringstream ss; ss << "Render text failed: " << SDL_GetError();
 			throw std::runtime_error(ss.str().c_str());

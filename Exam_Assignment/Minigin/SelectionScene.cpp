@@ -25,7 +25,8 @@ void SelectionScene::Initialize()
 	//mPlayerSettingSelection[0] = mOptions[0];
 
 
-	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	mSmallFont = ResourceManager::GetInstance().LoadFont("Lingua.otf", 24);
+	mBigFont = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	auto color = Color{ 255,255,255 };
 
 	float startY = 100.f;
@@ -35,7 +36,7 @@ void SelectionScene::Initialize()
 		auto player_Setting = std::make_shared<GameObject>();
 		Add(player_Setting);
 		player_Setting->AddComponent(std::make_shared<RenderComponent>());
-		player_Setting->AddComponent(std::make_shared<TextComponent>("Player" + std::to_string(playerID) + " :" + mOptions[0] + " " + mControllerOptions[0], font, color));
+		player_Setting->AddComponent(std::make_shared<TextComponent>("Player" + std::to_string(playerID) + " :" + mOptions[0] + " " + mControllerOptions[0], mSmallFont, color));
 		player_Setting->SetPosition(320, startY);
 		startY += 100.f;
 		playerID++;
@@ -75,22 +76,44 @@ void SelectionScene::Update(float deltaTime)
 			"Player" + std::to_string(i + 1) + " :" +
 			PlayerToString(mPlayerAndSettings[i].second.player) + " " +
 			ControllerToString(mPlayerAndSettings[i].second.controller));
-	}
+		if (mPlayerAndSettings[i].first == mCurrentlyActiveObject)
+			mPlayerAndSettings[i].first->GetComponent<TextComponent>()->SetFont(mBigFont);
+		else
+			mPlayerAndSettings[i].first->GetComponent<TextComponent>()->SetFont(mSmallFont);
 
+	}
+	int c = 0;
 	if(mInputManager.IsPressed(SDL_SCANCODE_RIGHT))
+
+		//for(auto& obj : mPlayerAndSettings)
+		//{
+		//	if (obj.first == mCurrentlyActiveObject)
+		//	{
+		//		if(mCurrentChoice == 1)
+		//		{
+		//			obj.second.controller = Controller((int(obj.second.controller) + 1) % mControllerChoices);
+		//		}
+		//		else
+		//		{
+		//			obj.second.player = Player((int(obj.second.player) + 1) % mOptionChoices);
+		//		}
+		//	}
+		//}
+		c = 1;
+	if (mInputManager.IsPressed(SDL_SCANCODE_LEFT))
+		c = -1;
+
+	for (auto& obj : mPlayerAndSettings)
 	{
-		for(auto& obj : mPlayerAndSettings)
+		if (obj.first == mCurrentlyActiveObject)
 		{
-			if (obj.first == mCurrentlyActiveObject)
+			if (mCurrentChoice == 1)
 			{
-				if(mCurrentChoice == 1)
-				{
-					obj.second.controller = Controller((int(obj.second.controller) + 1) % mControllerChoices);
-				}
-				else
-				{
-					obj.second.player = Player((int(obj.second.player) + 1) % mOptionChoices);
-				}
+				obj.second.controller = Controller((int(obj.second.controller) + c + mControllerChoices) % mControllerChoices);
+			}
+			else
+			{
+				obj.second.player = Player((int(obj.second.player) + c + mOptionChoices) % mOptionChoices);
 			}
 		}
 	}
@@ -98,12 +121,23 @@ void SelectionScene::Update(float deltaTime)
 	if (mInputManager.IsPressed(SDL_SCANCODE_SPACE))
 		mCurrentChoice = (mCurrentChoice + 1) % 2;
 
-	if(mInputManager.IsPressed(SDL_SCANCODE_DOWN))
+	if (mInputManager.IsPressed(SDL_SCANCODE_DOWN))
 		for (size_t i = 0; i < MAX_PLAYERS; i++)
 		{
 			if (mPlayerAndSettings[i].first == mCurrentlyActiveObject)
 			{
 				mCurrentlyActiveObject = mPlayerAndSettings[++i % MAX_PLAYERS].first;
+				mCurrentChoice = 0;
+			}
+		}
+
+	if (mInputManager.IsPressed(SDL_SCANCODE_UP))
+		for (size_t i = 0; i < MAX_PLAYERS; i++)
+		{
+			if (mPlayerAndSettings[i].first == mCurrentlyActiveObject)
+			{
+				if (i == 0) i = MAX_PLAYERS;
+				mCurrentlyActiveObject = mPlayerAndSettings[--i % MAX_PLAYERS].first;
 				mCurrentChoice = 0;
 			}
 		}

@@ -24,7 +24,7 @@ bool InputManager::ProcessInput()
 
 			//	We iterate through a hex value that is equal to the hex value given in Xinput.h
 			//	We set our own ControllerButton values to these hex values so we can add/remove buttons and continue using our own defined ControllerButton
-			for (int j = 0x1000; j <= 0x8000; j*=2)
+			for (int j = 0x0001; j <= 0x8000; j*=2)
 			{
 				if (currentState.Gamepad.wButtons & j)
 				{

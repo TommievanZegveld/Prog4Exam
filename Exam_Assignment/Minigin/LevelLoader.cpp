@@ -37,21 +37,16 @@ LevelLoader::LevelLoader(std::string filename)
 		}
 		if(row[0] == "portal")
 		{
-			Direction dir1, dir2;
+			Direction dir1;
 			if (row[3] == "left")
 				dir1 = Direction::LEFT;
 			else if(row[3] == "right")
 				dir1 = Direction::RIGHT;
 
-			if (row[6] == "left")
-				dir2 = Direction::LEFT;
-			else if (row[6] == "right")
-				dir2 = Direction::RIGHT;
 			auto portal = std::make_shared<Teleporter>(
 				glm::vec2(std::stoi(row[1]), std::stoi(row[2])),
 				dir1,
-				glm::vec2(std::stoi(row[4]), std::stoi(row[5])),
-				dir2);
+				glm::vec2(std::stoi(row[4]), std::stoi(row[5])));
 			mPortals.push_back(portal);
 		}
 	}

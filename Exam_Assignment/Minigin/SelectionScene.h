@@ -3,7 +3,7 @@
 #include "GameTypes.h"
 
 class InputManager;
-
+class Font;
 class SelectionScene final : public Scene
 {
 public:
@@ -28,6 +28,8 @@ private:
 
 	std::string PlayerToString(Player p);
 	std::string ControllerToString(Controller c);
+
+	std::shared_ptr<Font> mBigFont, mSmallFont;
 
 
 };

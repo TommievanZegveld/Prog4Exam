@@ -9,6 +9,10 @@ class GameObject;
 
 enum class ControllerButton
 {
+	Up = 0x0001,
+	Down =0x0002,
+	Left = 0x0004,
+	Right = 0x0008,
 	ButtonA = 0x1000,
 	ButtonB = 0x2000,
 	ButtonX = 0x4000,

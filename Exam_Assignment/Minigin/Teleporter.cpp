@@ -5,7 +5,7 @@
 #include "Character.h"
 
 
-Teleporter::Teleporter(glm::vec2 pos1, Direction dir, glm::vec2 pos2, Direction dir2) : mPosition1(pos1),mPosition2(pos2),mDirection1(dir),mDirection2(dir2), mColliderManager(ColliderManager::GetInstance())
+Teleporter::Teleporter(glm::vec2 pos1, Direction dir, glm::vec2 pos2) : mPosition(pos1),mToPosition(pos2), mAllowDirection(dir),mColliderManager(ColliderManager::GetInstance())
 {
 }
 
@@ -16,46 +16,32 @@ Teleporter::~Teleporter()
 
 void Teleporter::Init()
 {
-	mPortal1 = std::make_shared<GameObject>();
-	mPortal2 = std::make_shared<GameObject>();
+	//	Attaching Transform from original GameObject
+	GameObject::Init();
 
-	mPortal1->Init();
-	mPortal2->Init();
-
-	mPortal1->GetTransform()->SetPosition(mPosition1.x, mPosition1.y);
-	auto collider = std::make_shared<ColliderComponent>(glm::vec2(mPosition1.x, mPosition1.y), 24.f, 24.f, ColliderType::STATIC);
-	mPortal1->AddComponent(collider);
-
-	mPortal2->GetTransform()->SetPosition(mPosition2.x, mPosition2.y);
-	auto collider2 = std::make_shared<ColliderComponent>(glm::vec2(mPosition2.x, mPosition2.y), 24.f, 24.f, ColliderType::STATIC);
-	mPortal2->AddComponent(collider);
+	SetPosition(mPosition.x, mPosition.y);
+	auto collider = std::make_shared<ColliderComponent>(glm::vec2(mPosition.x, mPosition.y), 24.f, 24.f, ColliderType::DYNAMIC);
+	AddComponent(collider);
+	//	Make Teleporter visible with a green color
+	//auto rect = std::make_shared<RectangleComponent>(24.f, 24.f, Color{ 0,255,0 });
+	//AddComponent(rect);
 }
 
 void Teleporter::Update(float deltaTime)
 {
+	//	Update all the components first
+	GameObject::Update(deltaTime);
 	UNREFERENCED_PARAMETER(deltaTime);
 
-	if (mColliderManager.CheckCollision(mPortal1))
+	if (mColliderManager.CheckCollision(shared_from_this()))
 	{
 		auto collidingObj = mColliderManager.GetCollider()->GetGameObject().lock();
 		auto charCast = std::dynamic_pointer_cast<Character>(collidingObj);
 		if (charCast)
 		{
-			if (charCast->GetDirection() == mDirection1)
-				collidingObj->GetTransform()->SetPosition(mPosition2.x, mPosition2.y);
+			if (charCast->GetDirection() == mAllowDirection)
+				collidingObj->GetTransform()->SetPosition(mToPosition.x, mToPosition.y);
 		}
-	}
-
-	if (mColliderManager.CheckCollision(mPortal2))
-	{
-		auto collidingObj = mColliderManager.GetCollider()->GetGameObject().lock();
-		auto charCast = std::dynamic_pointer_cast<Character>(collidingObj);
-		if (charCast)
-		{
-			if (charCast->GetDirection() == mDirection2)
-				collidingObj->GetTransform()->SetPosition(mPosition1.x, mPosition1.y);
-		}
-	}
-	
+	}	
 }
 

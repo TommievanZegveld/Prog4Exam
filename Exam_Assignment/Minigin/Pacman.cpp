@@ -86,7 +86,7 @@ void Pacman::Update(float deltaTime)
 	if (!CheckCollisionInDirection(mNextDir, deltaTime,5.f))
 		SetDirection(mNextDir);
 
-	if(CheckCollisionInDirection(mCurrentDir,deltaTime, 2.f))
+	if(CheckCollisionInDirection(mCurrentDir,deltaTime, 3.f))
 		SetDirection(Direction::NONE);
 
 	if(mColliderManager.CheckCollision(shared_from_this()))
